@@ -48,6 +48,26 @@ git submodule update --remote --merge
 
 **See [SUBMODULE_MAPPING.md](SUBMODULE_MAPPING.md) for complete submodule documentation.**
 
+### Local Development Environment
+
+**Expected Git Status:**
+
+After configuring API keys (Phase 6), you may see 4 submodules marked as "modified" in `git status`:
+- `hyperliquid-whalealert-mcp`
+- `jupiter-mcp`
+- `rug-check-mcp`
+- `uniswap-trader-mcp`
+
+**This is expected behavior.** These submodules contain local `.env` files with your API keys, which are gitignored by the parent repository and will NOT be committed.
+
+**To verify your .env files are protected:**
+```bash
+git status --porcelain | grep "\.env"
+# Should return nothing (all .env files ignored)
+```
+
+For detailed API key management and security practices, see [API_KEYS_REFERENCE.md](API_KEYS_REFERENCE.md) and [SECURITY.md](SECURITY.md).
+
 ---
 
 ## 🚀 Two Installation Methods
