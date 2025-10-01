@@ -1,10 +1,12 @@
 /**
  * Crypto MCP Suite - PM2 Ecosystem Configuration
- * Version: 0.1.0-alpha
+ * Version: 0.2.0-alpha
  * Platform: Windows 10/11 (Windows-First Release)
  *
- * This file configures all 25 MCPs for PM2 process management.
+ * This file configures all 34 MCPs for PM2 process management.
  * Tier-based startup controlled by INSTALLATION_TIER environment variable.
+ *
+ * UPDATE: Added Tier 5 with CCXT + Kukapay suite (9 new crypto MCPs)
  */
 
 require('dotenv').config();
@@ -26,7 +28,8 @@ const TIERS = {
   enhanced: ['tier1', 'tier2'],
   advanced: ['tier1', 'tier2', 'tier3'],
   premium: ['tier1', 'tier2', 'tier3', 'tier4'],
-  full: ['tier1', 'tier2', 'tier3', 'tier4']
+  full: ['tier1', 'tier2', 'tier3', 'tier4', 'tier5'],
+  'crypto-plus': ['tier1', 'tier5'] // Essential utilities + new crypto MCPs only
 };
 
 const activeTiers = TIERS[installationTier] || TIERS.essential;
@@ -380,6 +383,136 @@ const mcps = [
     },
     error_file: path.join(logPath, 'crypto-analytics-error.log'),
     out_file: path.join(logPath, 'crypto-analytics-out.log')
+  },
+
+  // ==================== TIER 5: NEW CRYPTO ADDITIONS (9 MCPs) ====================
+  // CCXT + Kukapay Suite - Verified free-tier crypto MCPs
+  // Ports: 3041-3049
+
+  {
+    name: 'ccxt-mcp',
+    script: path.join(installPath, 'lib', 'ccxt-mcp', 'server.js'),
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.CCXT_PORT || 3041,
+      EXCHANGE_API_KEYS: process.env.EXCHANGE_API_KEYS || '{}' // Optional, for private trading
+    },
+    error_file: path.join(logPath, 'ccxt-mcp-error.log'),
+    out_file: path.join(logPath, 'ccxt-mcp-out.log')
+  },
+  {
+    name: 'crypto-indicators-mcp',
+    script: path.join(installPath, 'lib', 'crypto-indicators-mcp', 'server.py'),
+    tier: 'tier5',
+    interpreter: 'python3',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.CRYPTO_INDICATORS_PORT || 3042,
+      CACHE_ENABLED: process.env.INDICATORS_CACHE_ENABLED || 'true'
+    },
+    error_file: path.join(logPath, 'crypto-indicators-error.log'),
+    out_file: path.join(logPath, 'crypto-indicators-out.log')
+  },
+  {
+    name: 'crypto-feargreed-mcp',
+    script: path.join(installPath, 'lib', 'crypto-feargreed-mcp', 'server.py'),
+    tier: 'tier5',
+    interpreter: 'python3',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.CRYPTO_FEARGREED_PORT || 3043
+    },
+    error_file: path.join(logPath, 'crypto-feargreed-error.log'),
+    out_file: path.join(logPath, 'crypto-feargreed-out.log')
+  },
+  {
+    name: 'crypto-portfolio-mcp',
+    script: path.join(installPath, 'lib', 'crypto-portfolio-mcp', 'server.py'),
+    tier: 'tier5',
+    interpreter: 'python3',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.CRYPTO_PORTFOLIO_PORT || 3044,
+      PORTFOLIO_DATA_PATH: process.env.PORTFOLIO_DATA_PATH || path.join(dataPath, 'portfolio.json')
+    },
+    error_file: path.join(logPath, 'crypto-portfolio-error.log'),
+    out_file: path.join(logPath, 'crypto-portfolio-out.log')
+  },
+  {
+    name: 'hyperliquid-whalealert-mcp',
+    script: path.join(installPath, 'lib', 'hyperliquid-whalealert-mcp', 'server.py'),
+    tier: 'tier5',
+    interpreter: 'python3',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.HYPERLIQUID_WHALE_PORT || 3045,
+      MIN_POSITION_SIZE: process.env.HYPERLIQUID_MIN_POSITION || '100000'
+    },
+    error_file: path.join(logPath, 'hyperliquid-whalealert-error.log'),
+    out_file: path.join(logPath, 'hyperliquid-whalealert-out.log')
+  },
+  {
+    name: 'crypto-orderbook-mcp',
+    script: path.join(installPath, 'lib', 'crypto-orderbook-mcp', 'server.py'),
+    tier: 'tier5',
+    interpreter: 'python3',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.CRYPTO_ORDERBOOK_PORT || 3046,
+      EXCHANGE_API_KEYS: process.env.EXCHANGE_API_KEYS || '{}' // Same as CCXT
+    },
+    error_file: path.join(logPath, 'crypto-orderbook-error.log'),
+    out_file: path.join(logPath, 'crypto-orderbook-out.log')
+  },
+  {
+    name: 'cryptopanic-mcp',
+    script: path.join(installPath, 'lib', 'cryptopanic-mcp', 'server.py'),
+    tier: 'tier5',
+    interpreter: 'python3',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.CRYPTOPANIC_PORT || 3047,
+      CRYPTOPANIC_API_KEY: process.env.CRYPTOPANIC_API_KEY // Needs API tier verification
+    },
+    error_file: path.join(logPath, 'cryptopanic-error.log'),
+    out_file: path.join(logPath, 'cryptopanic-out.log')
+  },
+  {
+    name: 'whale-tracker-mcp',
+    script: path.join(installPath, 'lib', 'whale-tracker-mcp', 'server.py'),
+    tier: 'tier5',
+    interpreter: 'python3',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.WHALE_TRACKER_PORT || 3048,
+      WHALE_ALERT_API_KEY: process.env.WHALE_ALERT_API_KEY, // Needs API tier verification
+      MIN_TRANSACTION_USD: process.env.MIN_WHALE_TRANSACTION || '1000000'
+    },
+    error_file: path.join(logPath, 'whale-tracker-error.log'),
+    out_file: path.join(logPath, 'whale-tracker-out.log')
+  },
+  {
+    name: 'crypto-sentiment-mcp',
+    script: path.join(installPath, 'lib', 'crypto-sentiment-mcp', 'server.py'),
+    tier: 'tier5',
+    interpreter: 'python3',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.CRYPTO_SENTIMENT_PORT || 3049,
+      SENTIMENT_API_KEY: process.env.SENTIMENT_API_KEY // Needs API tier verification
+    },
+    error_file: path.join(logPath, 'crypto-sentiment-error.log'),
+    out_file: path.join(logPath, 'crypto-sentiment-out.log')
   }
 ];
 
@@ -404,6 +537,7 @@ module.exports.tierInfo = {
     tier1: mcps.filter(m => m.tier === 'tier1').length,
     tier2: mcps.filter(m => m.tier === 'tier2').length,
     tier3: mcps.filter(m => m.tier === 'tier3').length,
-    tier4: mcps.filter(m => m.tier === 'tier4').length
+    tier4: mcps.filter(m => m.tier === 'tier4').length,
+    tier5: mcps.filter(m => m.tier === 'tier5').length
   }
 };
