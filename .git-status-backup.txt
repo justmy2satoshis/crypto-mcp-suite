@@ -1,0 +1,25 @@
+On branch main
+Your branch is ahead of 'origin/main' by 8 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+  (commit or discard the untracked or modified content in submodules)
+	modified:   native/lib/hyperliquid-whalealert-mcp (modified content)
+	modified:   native/lib/jupiter-mcp (modified content, untracked content)
+	modified:   native/lib/rug-check-mcp (modified content)
+	modified:   native/lib/uniswap-trader-mcp (modified content, untracked content)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.env.phase5c.backup
+	.git-log-backup.txt
+	.git-status-backup.txt
+	AUDIT_REPORT.md
+	EMERGENCY_ARCHITECTURE_REPORT.md
+	PHASE_4_ASSESSMENT.md
+	docs/
+	native/lib.backup/
+
+no changes added to commit (use "git add" and/or "git commit -a")
