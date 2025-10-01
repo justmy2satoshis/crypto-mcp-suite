@@ -47,3 +47,6 @@ volumes/
 # OS files
 Thumbs.db
 .DS_Store
+
+# Backup files (Phase 7F)
+*.backup
