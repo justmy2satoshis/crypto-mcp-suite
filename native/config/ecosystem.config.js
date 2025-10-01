@@ -541,6 +541,40 @@ const mcps = [
     },
     error_file: path.join(logPath, 'crypto-sentiment-error.log'),
     out_file: path.join(logPath, 'crypto-sentiment-out.log')
+  },
+
+  // ========== PHASE 5A: NEW WORKING MCPs (2/7) ==========
+  // Tested October 1, 2025 - Both working out-of-the-box (no API keys required)
+  {
+    name: 'bridge-rates-mcp',
+    script: path.join(installPath, 'lib', 'bridge-rates-mcp', 'index.js'),
+    tier: 'tier5',
+    interpreter: 'node',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.BRIDGE_RATES_PORT || 3051
+    },
+    error_file: path.join(logPath, 'bridge-rates-mcp-error.log'),
+    out_file: path.join(logPath, 'bridge-rates-mcp-out.log')
+  },
+  {
+    name: 'memecoin-radar-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'memecoin-radar-mcp'),
+      'run',
+      'main.py'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.MEMECOIN_RADAR_PORT || 3052
+    },
+    error_file: path.join(logPath, 'memecoin-radar-mcp-error.log'),
+    out_file: path.join(logPath, 'memecoin-radar-mcp-out.log')
   }
 ];
 
