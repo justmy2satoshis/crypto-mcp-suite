@@ -1,10 +1,10 @@
 # Git Submodule Mapping - Crypto MCP Suite
 
-**Purpose:** This document maps all 27 MCP servers to their original GitHub repositories as git submodules.
+**Purpose:** This document maps all 36 MCP servers to their original GitHub repositories as git submodules.
 
 **Created:** October 2, 2025
-**Phase:** 5C - Git Submodule Conversion
-**Total Submodules:** 27
+**Last Updated:** October 2, 2025 (Phase 8A)
+**Total Submodules:** 36 (27 original + 9 Phase 8A additions)
 
 ---
 
@@ -47,12 +47,42 @@ Each is a git submodule pointing to its original GitHub repository.
 | 25 | uniswap-trader-mcp | https://github.com/kukapay/uniswap-trader-mcp | native/lib/uniswap-trader-mcp |
 | 26 | wallet-inspector-mcp | https://github.com/kukapay/wallet-inspector-mcp.git | native/lib/wallet-inspector-mcp |
 | 27 | whale-tracker-mcp | https://github.com/kukapay/whale-tracker-mcp | native/lib/whale-tracker-mcp |
+| **28** | **binance-alpha-mcp** | **https://github.com/kukapay/binance-alpha-mcp.git** | **native/lib/binance-alpha-mcp** |
+| **29** | **bitcoin-utxo-mcp** | **https://github.com/kukapay/bitcoin-utxo-mcp.git** | **native/lib/bitcoin-utxo-mcp** |
+| **30** | **defi-yields-mcp** | **https://github.com/kukapay/defi-yields-mcp.git** | **native/lib/defi-yields-mcp** |
+| **31** | **ens-mcp** | **https://github.com/kukapay/ens-mcp.git** | **native/lib/ens-mcp** |
+| **32** | **hyperliquid-info-mcp** | **https://github.com/kukapay/hyperliquid-info-mcp.git** | **native/lib/hyperliquid-info-mcp** |
+| **33** | **nft-analytics-mcp** | **https://github.com/kukapay/nft-analytics-mcp.git** | **native/lib/nft-analytics-mcp** |
+| **34** | **pumpfun-wallets-mcp** | **https://github.com/kukapay/pumpfun-wallets-mcp.git** | **native/lib/pumpfun-wallets-mcp** |
+| **35** | **raydium-launchlab-mcp** | **https://github.com/kukapay/raydium-launchlab-mcp.git** | **native/lib/raydium-launchlab-mcp** |
+| **36** | **sui-trader-mcp** | **https://github.com/kukapay/sui-trader-mcp.git** | **native/lib/sui-trader-mcp** |
+
+---
+
+## Phase 8A Additions (October 2, 2025)
+
+**New MCPs Added:** 9 (out of 10 planned)
+**Total MCPs:** 36/63 (57% coverage, up from 43%)
+
+### Successfully Installed
+1. **defi-yields-mcp** - DeFi yield aggregator (Python/uv)
+2. **nft-analytics-mcp** - NFT market analytics (Python/uv)
+3. **bitcoin-utxo-mcp** - Bitcoin UTXO analysis (Python/uv)
+4. **hyperliquid-info-mcp** - Hyperliquid market data (Python/uv)
+5. **binance-alpha-mcp** - Binance Alpha alerts (Node.js)
+6. **ens-mcp** - ENS domain resolver (Python/uv)
+7. **pumpfun-wallets-mcp** - Pump.fun wallet tracker (Python/uv)
+8. **sui-trader-mcp** - Sui DEX trader (Node.js)
+9. **raydium-launchlab-mcp** - Raydium LaunchLab monitor (Node.js)
+
+### Skipped
+- **ethereum-validators-queue-mcp** - Repository not found on GitHub (404 error)
 
 ---
 
 ## Repository Attribution
 
-**Primary Source:** [Kukapay Crypto MCP Suite](https://github.com/kukapay) (26 MCPs)
+**Primary Source:** [Kukapay Crypto MCP Suite](https://github.com/kukapay) (35 MCPs)
 **External Dependency:** [doggybee/mcp-server-ccxt](https://github.com/doggybee/mcp-server-ccxt) (1 MCP)
 
 ---

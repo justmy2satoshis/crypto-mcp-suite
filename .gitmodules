@@ -79,3 +79,30 @@
 [submodule "native/lib/whale-tracker-mcp"]
 	path = native/lib/whale-tracker-mcp
 	url = https://github.com/kukapay/whale-tracker-mcp
+[submodule "native/lib/defi-yields-mcp"]
+	path = native/lib/defi-yields-mcp
+	url = https://github.com/kukapay/defi-yields-mcp.git
+[submodule "native/lib/nft-analytics-mcp"]
+	path = native/lib/nft-analytics-mcp
+	url = https://github.com/kukapay/nft-analytics-mcp.git
+[submodule "native/lib/bitcoin-utxo-mcp"]
+	path = native/lib/bitcoin-utxo-mcp
+	url = https://github.com/kukapay/bitcoin-utxo-mcp.git
+[submodule "native/lib/hyperliquid-info-mcp"]
+	path = native/lib/hyperliquid-info-mcp
+	url = https://github.com/kukapay/hyperliquid-info-mcp.git
+[submodule "native/lib/binance-alpha-mcp"]
+	path = native/lib/binance-alpha-mcp
+	url = https://github.com/kukapay/binance-alpha-mcp.git
+[submodule "native/lib/ens-mcp"]
+	path = native/lib/ens-mcp
+	url = https://github.com/kukapay/ens-mcp.git
+[submodule "native/lib/pumpfun-wallets-mcp"]
+	path = native/lib/pumpfun-wallets-mcp
+	url = https://github.com/kukapay/pumpfun-wallets-mcp.git
+[submodule "native/lib/sui-trader-mcp"]
+	path = native/lib/sui-trader-mcp
+	url = https://github.com/kukapay/sui-trader-mcp.git
+[submodule "native/lib/raydium-launchlab-mcp"]
+	path = native/lib/raydium-launchlab-mcp
+	url = https://github.com/kukapay/raydium-launchlab-mcp.git

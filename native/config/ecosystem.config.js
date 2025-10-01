@@ -868,6 +868,163 @@ const mcps = [
     },
     error_file: path.join(logPath, 'funding-rates-mcp-error.log'),
     out_file: path.join(logPath, 'funding-rates-mcp-out.log')
+  },
+
+  // ==========================================================================
+  // PHASE 8A: Critical Gap MCPs (10 MCPs, Ports 3068-3077)
+  // ==========================================================================
+
+  {
+    name: 'defi-yields-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'defi-yields-mcp'),
+      'run',
+      'defi-yields-mcp'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.DEFI_YIELDS_PORT || 3068
+    },
+    error_file: path.join(logPath, 'defi-yields-mcp-error.log'),
+    out_file: path.join(logPath, 'defi-yields-mcp-out.log')
+  },
+  {
+    name: 'nft-analytics-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'nft-analytics-mcp'),
+      'run',
+      'nft-analytics-mcp'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.NFT_ANALYTICS_PORT || 3069
+    },
+    error_file: path.join(logPath, 'nft-analytics-mcp-error.log'),
+    out_file: path.join(logPath, 'nft-analytics-mcp-out.log')
+  },
+  {
+    name: 'bitcoin-utxo-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'bitcoin-utxo-mcp'),
+      'run',
+      'bitcoin-utxo-mcp'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.BITCOIN_UTXO_PORT || 3070
+    },
+    error_file: path.join(logPath, 'bitcoin-utxo-mcp-error.log'),
+    out_file: path.join(logPath, 'bitcoin-utxo-mcp-out.log')
+  },
+  {
+    name: 'hyperliquid-info-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'hyperliquid-info-mcp'),
+      'run',
+      'hyperliquid-info-mcp'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.HYPERLIQUID_INFO_PORT || 3071
+    },
+    error_file: path.join(logPath, 'hyperliquid-info-mcp-error.log'),
+    out_file: path.join(logPath, 'hyperliquid-info-mcp-out.log')
+  },
+  {
+    name: 'binance-alpha-mcp',
+    script: path.join(installPath, 'lib', 'binance-alpha-mcp', 'index.js'),
+    tier: 'tier5',
+    interpreter: 'node',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.BINANCE_ALPHA_PORT || 3072
+    },
+    error_file: path.join(logPath, 'binance-alpha-mcp-error.log'),
+    out_file: path.join(logPath, 'binance-alpha-mcp-out.log')
+  },
+  {
+    name: 'ens-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'ens-mcp'),
+      'run',
+      'ens-mcp'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.ENS_PORT || 3073,
+      INFURA_PROJECT_ID: process.env.INFURA_PROJECT_ID || ''
+    },
+    error_file: path.join(logPath, 'ens-mcp-error.log'),
+    out_file: path.join(logPath, 'ens-mcp-out.log')
+  },
+  // NOTE: ethereum-validators-queue-mcp repository not found on GitHub
+  // Skipped in Phase 8A installation
+  {
+    name: 'pumpfun-wallets-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'pumpfun-wallets-mcp'),
+      'run',
+      'pumpfun-wallets-mcp'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.PUMPFUN_WALLETS_PORT || 3075,
+      SOLANA_RPC_URL: process.env.SOLANA_RPC_URL || 'https://api.mainnet-beta.solana.com'
+    },
+    error_file: path.join(logPath, 'pumpfun-wallets-mcp-error.log'),
+    out_file: path.join(logPath, 'pumpfun-wallets-mcp-out.log')
+  },
+  {
+    name: 'sui-trader-mcp',
+    script: path.join(installPath, 'lib', 'sui-trader-mcp', 'index.js'),
+    tier: 'tier5',
+    interpreter: 'node',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.SUI_TRADER_PORT || 3076
+    },
+    error_file: path.join(logPath, 'sui-trader-mcp-error.log'),
+    out_file: path.join(logPath, 'sui-trader-mcp-out.log')
+  },
+  {
+    name: 'raydium-launchlab-mcp',
+    script: path.join(installPath, 'lib', 'raydium-launchlab-mcp', 'index.js'),
+    tier: 'tier5',
+    interpreter: 'node',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.RAYDIUM_LAUNCHLAB_PORT || 3077,
+      SOLANA_RPC_URL: process.env.SOLANA_RPC_URL || 'https://api.mainnet-beta.solana.com'
+    },
+    error_file: path.join(logPath, 'raydium-launchlab-mcp-error.log'),
+    out_file: path.join(logPath, 'raydium-launchlab-mcp-out.log')
   }
 ];
 
