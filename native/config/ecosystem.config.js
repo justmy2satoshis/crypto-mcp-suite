@@ -575,6 +575,156 @@ const mcps = [
     },
     error_file: path.join(logPath, 'memecoin-radar-mcp-error.log'),
     out_file: path.join(logPath, 'memecoin-radar-mcp-out.log')
+  },
+
+  // ========== PHASE 5B BATCH 1: FREE TIER (3/7) ==========
+  // Tested October 1, 2025 - Working without API keys
+  {
+    name: 'dex-metrics-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'dex-metrics-mcp'),
+      'run',
+      'main.py'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.DEX_METRICS_PORT || 3053
+    },
+    error_file: path.join(logPath, 'dex-metrics-mcp-error.log'),
+    out_file: path.join(logPath, 'dex-metrics-mcp-out.log')
+  },
+  {
+    name: 'honeypot-detector-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'honeypot-detector-mcp'),
+      'run',
+      'main.py'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.HONEYPOT_DETECTOR_PORT || 3054
+    },
+    error_file: path.join(logPath, 'honeypot-detector-mcp-error.log'),
+    out_file: path.join(logPath, 'honeypot-detector-mcp-out.log')
+  },
+  {
+    name: 'chainlist-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'chainlist-mcp'),
+      'run',
+      'main.py'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.CHAINLIST_PORT || 3055
+    },
+    error_file: path.join(logPath, 'chainlist-mcp-error.log'),
+    out_file: path.join(logPath, 'chainlist-mcp-out.log')
+  },
+
+  // ========== PHASE 5B BATCH 2: DeFi & Analytics (5/7) ==========
+  // Tested October 1, 2025 - Working without API keys
+  {
+    name: 'crypto-liquidations-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'crypto-liquidations-mcp'),
+      'run',
+      'main.py'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.CRYPTO_LIQUIDATIONS_PORT || 3056
+    },
+    error_file: path.join(logPath, 'crypto-liquidations-mcp-error.log'),
+    out_file: path.join(logPath, 'crypto-liquidations-mcp-out.log')
+  },
+  {
+    name: 'dao-proposals-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'dao-proposals-mcp'),
+      'run',
+      'main.py'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.DAO_PROPOSALS_PORT || 3057
+    },
+    error_file: path.join(logPath, 'dao-proposals-mcp-error.log'),
+    out_file: path.join(logPath, 'dao-proposals-mcp-out.log')
+  },
+  {
+    name: 'polymarket-predictions-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'polymarket-predictions-mcp'),
+      'run',
+      'main.py'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.POLYMARKET_PORT || 3058
+    },
+    error_file: path.join(logPath, 'polymarket-predictions-mcp-error.log'),
+    out_file: path.join(logPath, 'polymarket-predictions-mcp-out.log')
+  },
+  {
+    name: 'crypto-projects-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'crypto-projects-mcp'),
+      'run',
+      'main.py'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.CRYPTO_PROJECTS_PORT || 3059
+    },
+    error_file: path.join(logPath, 'crypto-projects-mcp-error.log'),
+    out_file: path.join(logPath, 'crypto-projects-mcp-out.log')
+  },
+  {
+    name: 'etf-flow-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'etf-flow-mcp'),
+      'run',
+      'etf-flow-mcp'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.ETF_FLOW_PORT || 3060
+    },
+    error_file: path.join(logPath, 'etf-flow-mcp-error.log'),
+    out_file: path.join(logPath, 'etf-flow-mcp-out.log')
   }
 ];
 
