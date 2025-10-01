@@ -1,0 +1,861 @@
+version: '3.8'
+
+services:
+  # Tier S MCPs (10 - Must-have, avg score 87/100)
+
+  coingecko-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: coingecko
+    container_name: crypto-suite-coingecko
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      - MCP_NAME=coingecko
+      - API_KEY=${COINGECKO_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/coingecko:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  cryptocompare-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: cryptocompare
+    container_name: crypto-suite-cryptocompare
+    restart: unless-stopped
+    ports:
+      - "3002:3000"
+    environment:
+      - MCP_NAME=cryptocompare
+      - API_KEY=${CRYPTOCOMPARE_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/cryptocompare:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  glassnode-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: glassnode
+    container_name: crypto-suite-glassnode
+    restart: unless-stopped
+    ports:
+      - "3003:3000"
+    environment:
+      - MCP_NAME=glassnode
+      - API_KEY=${GLASSNODE_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/glassnode:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  dune-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: dune
+    container_name: crypto-suite-dune
+    restart: unless-stopped
+    ports:
+      - "3004:3000"
+    environment:
+      - MCP_NAME=dune
+      - API_KEY=${DUNE_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/dune:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  nansen-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: nansen
+    container_name: crypto-suite-nansen
+    restart: unless-stopped
+    ports:
+      - "3005:3000"
+    environment:
+      - MCP_NAME=nansen
+      - API_KEY=${NANSEN_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/nansen:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  messari-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: messari
+    container_name: crypto-suite-messari
+    restart: unless-stopped
+    ports:
+      - "3006:3000"
+    environment:
+      - MCP_NAME=messari
+      - API_KEY=${MESSARI_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/messari:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  theblock-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: theblock
+    container_name: crypto-suite-theblock
+    restart: unless-stopped
+    ports:
+      - "3007:3000"
+    environment:
+      - MCP_NAME=theblock
+      - API_KEY=${THEBLOCK_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/theblock:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  defillama-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: defillama
+    container_name: crypto-suite-defillama
+    restart: unless-stopped
+    ports:
+      - "3008:3000"
+    environment:
+      - MCP_NAME=defillama
+      - API_KEY=${DEFILLAMA_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/defillama:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  santiment-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: santiment
+    container_name: crypto-suite-santiment
+    restart: unless-stopped
+    ports:
+      - "3009:3000"
+    environment:
+      - MCP_NAME=santiment
+      - API_KEY=${SANTIMENT_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/santiment:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  chainanalysis-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: chainanalysis
+    container_name: crypto-suite-chainanalysis
+    restart: unless-stopped
+    ports:
+      - "3010:3000"
+    environment:
+      - MCP_NAME=chainanalysis
+      - API_KEY=${CHAINANALYSIS_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/chainanalysis:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Tier A MCPs (10 - Recommended, avg score 78/100)
+
+  kaiko-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: kaiko
+    container_name: crypto-suite-kaiko
+    restart: unless-stopped
+    ports:
+      - "3011:3000"
+    environment:
+      - MCP_NAME=kaiko
+      - API_KEY=${KAIKO_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/kaiko:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - tier-a
+      - full
+
+  footprint-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: footprint
+    container_name: crypto-suite-footprint
+    restart: unless-stopped
+    ports:
+      - "3012:3000"
+    environment:
+      - MCP_NAME=footprint
+      - API_KEY=${FOOTPRINT_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/footprint:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - tier-a
+      - full
+
+  intotheblock-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: intotheblock
+    container_name: crypto-suite-intotheblock
+    restart: unless-stopped
+    ports:
+      - "3013:3000"
+    environment:
+      - MCP_NAME=intotheblock
+      - API_KEY=${INTOTHEBLOCK_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/intotheblock:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - tier-a
+      - full
+
+  coinmetrics-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: coinmetrics
+    container_name: crypto-suite-coinmetrics
+    restart: unless-stopped
+    ports:
+      - "3014:3000"
+    environment:
+      - MCP_NAME=coinmetrics
+      - API_KEY=${COINMETRICS_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/coinmetrics:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - tier-a
+      - full
+
+  parsec-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: parsec
+    container_name: crypto-suite-parsec
+    restart: unless-stopped
+    ports:
+      - "3015:3000"
+    environment:
+      - MCP_NAME=parsec
+      - API_KEY=${PARSEC_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/parsec:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - tier-a
+      - full
+
+  lunarcrush-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: lunarcrush
+    container_name: crypto-suite-lunarcrush
+    restart: unless-stopped
+    ports:
+      - "3016:3000"
+    environment:
+      - MCP_NAME=lunarcrush
+      - API_KEY=${LUNARCRUSH_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/lunarcrush:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - tier-a
+      - full
+
+  coinmarketcap-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: coinmarketcap
+    container_name: crypto-suite-coinmarketcap
+    restart: unless-stopped
+    ports:
+      - "3017:3000"
+    environment:
+      - MCP_NAME=coinmarketcap
+      - API_KEY=${COINMARKETCAP_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/coinmarketcap:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - tier-a
+      - full
+
+  cryptoquant-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: cryptoquant
+    container_name: crypto-suite-cryptoquant
+    restart: unless-stopped
+    ports:
+      - "3018:3000"
+    environment:
+      - MCP_NAME=cryptoquant
+      - API_KEY=${CRYPTOQUANT_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/cryptoquant:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - tier-a
+      - full
+
+  arkham-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: arkham
+    container_name: crypto-suite-arkham
+    restart: unless-stopped
+    ports:
+      - "3019:3000"
+    environment:
+      - MCP_NAME=arkham
+      - API_KEY=${ARKHAM_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/arkham:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - tier-a
+      - full
+
+  debank-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: debank
+    container_name: crypto-suite-debank
+    restart: unless-stopped
+    ports:
+      - "3020:3000"
+    environment:
+      - MCP_NAME=debank
+      - API_KEY=${DEBANK_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/debank:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - tier-a
+      - full
+
+  # Tier B MCPs (5 - Optional, avg score 72/100)
+
+  amberdata-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: amberdata
+    container_name: crypto-suite-amberdata
+    restart: unless-stopped
+    ports:
+      - "3021:3000"
+    environment:
+      - MCP_NAME=amberdata
+      - API_KEY=${AMBERDATA_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/amberdata:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - tier-b
+      - full
+
+  tokenmetrics-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: tokenmetrics
+    container_name: crypto-suite-tokenmetrics
+    restart: unless-stopped
+    ports:
+      - "3022:3000"
+    environment:
+      - MCP_NAME=tokenmetrics
+      - API_KEY=${TOKENMETRICS_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/tokenmetrics:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - tier-b
+      - full
+
+  santiment-pro-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: santiment-pro
+    container_name: crypto-suite-santiment-pro
+    restart: unless-stopped
+    ports:
+      - "3023:3000"
+    environment:
+      - MCP_NAME=santiment-pro
+      - API_KEY=${SANTIMENT_PRO_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/santiment-pro:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - tier-b
+      - full
+
+  messari-pro-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: messari-pro
+    container_name: crypto-suite-messari-pro
+    restart: unless-stopped
+    ports:
+      - "3024:3000"
+    environment:
+      - MCP_NAME=messari-pro
+      - API_KEY=${MESSARI_PRO_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/messari-pro:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - tier-b
+      - full
+
+  glassnode-pro-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MCP_NAME: glassnode-pro
+    container_name: crypto-suite-glassnode-pro
+    restart: unless-stopped
+    ports:
+      - "3025:3000"
+    environment:
+      - MCP_NAME=glassnode-pro
+      - API_KEY=${GLASSNODE_PRO_API_KEY}
+      - REDIS_HOST=${REDIS_HOST:-localhost}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - POSTGRES_HOST=${POSTGRES_HOST:-localhost}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      - POSTGRES_DB=${POSTGRES_DB:-crypto_mcp_suite}
+      - POSTGRES_USER=${POSTGRES_USER:-crypto_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - CACHE_TTL=${CACHE_TTL_SECONDS:-300}
+      - LOG_LEVEL=info
+    volumes:
+      - ./logs/glassnode-pro:/app/logs
+    networks:
+      - crypto-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - tier-b
+      - full
+
+networks:
+  crypto-network:
+    driver: bridge
+
+volumes:
+  logs:
