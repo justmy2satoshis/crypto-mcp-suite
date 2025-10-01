@@ -1,7 +1,7 @@
 # MCP Installation Status
 **Crypto MCP Suite - Installation Overview**
 
-**Last Updated:** October 2, 2025 (Post Phase 8A)
+**Last Updated:** October 2, 2025 (Post Phase 8C - Strategic Assessment)
 
 ---
 
@@ -49,40 +49,45 @@
 
 ---
 
-## ⏳ Not Yet Installed (27/63)
+## ⏳ Not Yet Installed (30/66)
 
-### HIGH PRIORITY: Remaining Critical Gap (1 MCP)
-1. **ethereum-validators-queue-mcp** - ETH validator queue monitoring (repository not found)
+### 🔴 CRITICAL/HIGH PRIORITY: Premium & Gap MCPs (5 MCPs)
+1. **tokenmetrics-mcp** - TokenMetrics AI analytics (18+ tools: trading signals, grades, scenarios) ⭐⭐⭐⭐⭐
+2. **lunarcrush-mcp** - LunarCrush social intelligence (11+ tools: sentiment, influencers, galaxy score) ⭐⭐⭐⭐
+3. **ethereum-validator-queue-mcp** - ETH validator queue monitoring (corrected spelling: singular not plural)
+4. **crypto-rss-mcp** - Custom RSS feed aggregator (unique: user-defined sources, cryptopanic = 1 tool only)
+5. **crypto-whitepapers-mcp** - Research automation (whitepaper database, search, comparative analysis)
 
-### MEDIUM PRIORITY: Enhanced Capabilities (15 MCPs)
-2. **uniswap-poolspy-mcp** - Real-time Uniswap V3 pool creation alerts (redundant)
-3. **pancakeswap-poolspy-mcp** - PancakeSwap BSC pool monitoring
-4. **aster-info-mcp** - Aster DEX analytics (low volume, niche)
-5. **pumpswap-mcp** - PumpSwap memecoin DEX (redundant with radar)
-6. **bridge-metrics-mcp** - Historical bridge analytics (redundant with bridge-rates)
-7. **wormhole-metrics-mcp** - Wormhole bridge detailed metrics (redundant)
-8. **crypto-news-mcp** - Generic crypto news (redundant with cryptopanic)
-9. **cointelegraph-mcp** - Cointelegraph news feed (redundant)
-10. **blockbeats-mcp** - Chinese crypto news from BlockBeats
-11. **crypto-rss-mcp** - Generic RSS feed aggregation (redundant)
-12. **crypto-stocks-mcp** - Crypto-related stocks tracking (out of scope)
-13. **crypto-funds-mcp** - Crypto fund performance tracking (niche)
-14. **crypto-whitepapers-mcp** - Whitepaper database and search
-15. **freqtrade-mcp** - Freqtrade bot integration (complex setup)
-16. **bsc-multisend-mcp** - Bulk BSC token transfers (administrative)
+### 🟡 MEDIUM PRIORITY: Enhanced Capabilities (13 MCPs)
+6. **crypto-news-mcp** - Multi-source news validation (complements cryptopanic's single aggregation tool)
+7. **wormhole-metrics-mcp** - Wormhole bridge analytics (provides analytical depth beyond bridge-rates)
+8. **blockbeats-mcp** - Chinese crypto news from BlockBeats (IF English translation supported)
+9. **freqtrade-mcp** - Freqtrade bot integration (defer to autonomous trading phase)
+10. **uniswap-poolspy-mcp** - Real-time Uniswap V3 pool creation alerts
+11. **pancakeswap-poolspy-mcp** - PancakeSwap BSC pool monitoring
+12. **aster-info-mcp** - Aster DEX analytics (low volume, niche)
+13. **pumpswap-mcp** - PumpSwap memecoin DEX (redundant with radar)
+14. **bridge-metrics-mcp** - Historical bridge analytics (redundant with bridge-rates)
+15. **cointelegraph-mcp** - Cointelegraph news feed (single-source, lower priority)
+16. **crypto-stocks-mcp** - Crypto-related stocks tracking (out of scope)
+17. **crypto-funds-mcp** - Crypto fund performance tracking (niche)
+18. **bsc-multisend-mcp** - Bulk BSC token transfers (administrative)
 
-### LOW PRIORITY: Specialized/Out-of-Scope (11 MCPs)
-17. **modbus-mcp** - Industrial IoT Modbus protocol (not crypto)
-18. **opcua-mcp** - Industrial IoT OPC UA protocol (not crypto)
-19. **nearby-search-mcp** - Location services via Google Places (not crypto)
-20. **hf-trending-mcp** - Hugging Face AI models trending (not crypto)
-21. **whattimeisit-mcp** - Time utility (trivial, not crypto)
-22. **whereami-mcp** - IP geolocation (not crypto)
-23. **whoami-mcp** - Identity utility (trivial, not crypto)
-24. **twitter-username-changes-mcp** - Twitter username tracking (not crypto-specific)
-25. **token-minter-mcp** - Token contract deployment (development only)
-26. **token-revoke-mcp** - Token approval revocation (security tool)
-27. **tornado-cash-mcp** - Tornado Cash mixer tracking (⚠️ OFAC sanctioned - DO NOT INSTALL)
+### 🔵 LOW PRIORITY: Specialized/Out-of-Scope (11 MCPs)
+19. **modbus-mcp** - Industrial IoT Modbus protocol (not crypto)
+20. **opcua-mcp** - Industrial IoT OPC UA protocol (not crypto)
+21. **nearby-search-mcp** - Location services via Google Places (not crypto)
+22. **hf-trending-mcp** - Hugging Face AI models trending (not crypto)
+23. **whattimeisit-mcp** - Time utility (trivial, not crypto)
+24. **whereami-mcp** - IP geolocation (not crypto)
+25. **whoami-mcp** - Identity utility (trivial, not crypto)
+26. **twitter-username-changes-mcp** - Twitter username tracking (not crypto-specific)
+27. **token-minter-mcp** - Token contract deployment (development only)
+28. **token-revoke-mcp** - Token approval revocation (security tool)
+29. **tornado-cash-mcp** - Tornado Cash mixer tracking (⚠️ OFAC sanctioned - DO NOT INSTALL)
+
+### ⚠️ SPECIAL CASE: Cost-Prohibitive (1 MCP)
+30. **nansen-mcp** - Smart money tracking (400M+ addresses, 25+ chains) - Excellent but requires Professional tier ($150/mo, Pioneer 1K credits insufficient) ⭐⭐⭐⭐⭐
 
 ---
 
@@ -90,18 +95,33 @@
 
 | Metric | Value | Details |
 |--------|-------|---------|
-| **Total Available** | 63 MCPs | Complete Kukapay crypto MCP universe |
-| **Installed** | 36 MCPs | 57% coverage |
+| **Total Available** | 66 MCPs | Kukapay universe + 3 premium MCPs discovered in Phase 8C |
+| **Installed** | 36 MCPs | 55% coverage (revised denominator) |
 | **Operational** | TBD | Pending Phase 8A testing |
-| **Remaining** | 27 MCPs | 43% to install |
+| **Remaining** | 30 MCPs | 5 CRITICAL/HIGH + 13 MEDIUM + 11 LOW + 1 cost-prohibitive |
 | **Monthly Cost** | $0 | All installed MCPs use free-tier APIs |
-| **Coverage Gaps** | 1 critical | ethereum-validators-queue-mcp (not found) |
+| **Critical Gaps** | 5 MCPs | 3 premium + ethereum-validator-queue + crypto-rss |
+
+### Phase 8C Strategic Discoveries
+🔴 **3 Premium MCPs Found:**
+- **tokenmetrics-mcp** (18+ AI-powered tools)
+- **lunarcrush-mcp** (11+ social analytics tools)
+- **nansen-mcp** (excellent but $150/month Professional tier required)
+
+🟡 **Repository Naming Error Resolved:**
+- ethereum-validators-queue-mcp ❌ (404 error - plural spelling)
+- ethereum-validator-queue-mcp ✅ (correct - singular spelling)
+
+🟢 **News MCP Strategy Revised:**
+- cryptopanic-mcp-server has only 1 tool (not comprehensive)
+- Multi-source validation valuable (crypto-news, crypto-rss upgraded)
 
 ### Installation Breakdown
-- **Original (Phase 1-6):** 27 MCPs (43%)
-- **Phase 8A:** +9 MCPs (+14%, now 57%)
-- **Phase 8B Target:** +15 MCPs (→72%)
-- **Phase 8C Target:** +11 MCPs (→100%, excluding tornado-cash)
+- **Original (Phase 1-6):** 27 MCPs (41%)
+- **Phase 8A:** +9 MCPs (+14%, now 55%)
+- **Phase 8D Target:** +5 CRITICAL MCPs (→61%)
+- **Phase 8E Target:** +13 MEDIUM MCPs (→81%)
+- **Phase 8F Target:** +11 LOW MCPs (→97%, excluding nansen & tornado-cash)
 
 ### Key Achievements
 ✅ DeFi yield aggregation (defi-yields-mcp)
@@ -109,11 +129,13 @@
 ✅ Bitcoin on-chain analysis (bitcoin-utxo-mcp)
 ✅ Multi-chain DEX coverage (Ethereum, Solana, Sui)
 ✅ Zero monthly cost (free-tier only)
+✅ Premium MCP discovery (tokenmetrics, lunarcrush)
 
 ### Next Steps
-- **Phase 8B:** Install 15 medium-priority MCPs (3-4 weeks)
-- **Phase 8C:** Install 11 low-priority MCPs (2 weeks)
-- **Target:** 62/63 coverage (exclude tornado-cash due to OFAC sanctions)
+- **Phase 8D (7 days):** Install 5 CRITICAL/HIGH priority MCPs (tokenmetrics, lunarcrush, ethereum-validator-queue, crypto-rss, crypto-whitepapers)
+- **Phase 8E (2-3 weeks):** Install 13 MEDIUM priority MCPs
+- **Phase 8F (2 weeks):** Install 11 LOW priority MCPs
+- **Target:** 64/66 coverage (exclude nansen due to cost, tornado-cash due to OFAC sanctions)
 
 ---
 
