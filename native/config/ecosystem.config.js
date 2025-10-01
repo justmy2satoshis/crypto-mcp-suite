@@ -372,20 +372,8 @@ const mcps = [
     error_file: path.join(logPath, 'rag-context-error.log'),
     out_file: path.join(logPath, 'rag-context-out.log')
   },
-  {
-    name: 'crypto-analytics',
-    script: path.join(installPath, 'lib', 'crypto-analytics', 'server.js'),
-    tier: 'tier4',
-    ...commonOptions,
-    env: {
-      ...commonOptions.env,
-      PORT: process.env.CRYPTO_ANALYTICS_PORT || 3034
-    },
-    error_file: path.join(logPath, 'crypto-analytics-error.log'),
-    out_file: path.join(logPath, 'crypto-analytics-out.log')
-  },
 
-  // ==================== TIER 5: NEW CRYPTO ADDITIONS (9 MCPs) ====================
+  // ==================== TIER 5: CRYPTO MCP SUITE (27 MCPs) ====================
   // CCXT + Kukapay Suite - Verified free-tier crypto MCPs
   // Ports: 3041-3049
 
@@ -500,47 +488,71 @@ const mcps = [
     out_file: path.join(logPath, 'crypto-orderbook-out.log')
   },
   {
-    name: 'cryptopanic-mcp',
-    script: path.join(installPath, 'lib', 'cryptopanic-mcp', 'server.py'),
+    name: 'uniswap-trader-mcp',
+    script: path.join(installPath, 'lib', 'uniswap-trader-mcp', 'index.js'),
     tier: 'tier5',
-    interpreter: 'python3',
+    interpreter: 'node',
     ...commonOptions,
     env: {
       ...commonOptions.env,
-      PORT: process.env.CRYPTOPANIC_PORT || 3047,
-      CRYPTOPANIC_API_KEY: process.env.CRYPTOPANIC_API_KEY // Needs API tier verification
+      PORT: process.env.UNISWAP_TRADER_PORT || 3047,
+      INFURA_API_KEY: process.env.INFURA_API_KEY,
+      INFURA_ENDPOINT: process.env.INFURA_ENDPOINT
     },
-    error_file: path.join(logPath, 'cryptopanic-error.log'),
-    out_file: path.join(logPath, 'cryptopanic-out.log')
+    error_file: path.join(logPath, 'uniswap-trader-mcp-error.log'),
+    out_file: path.join(logPath, 'uniswap-trader-mcp-out.log')
+  },
+  {
+    name: 'jupiter-mcp',
+    script: path.join(installPath, 'lib', 'jupiter-mcp', 'index.js'),
+    tier: 'tier5',
+    interpreter: 'node',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.JUPITER_PORT || 3048,
+      SOLANA_RPC_URL: process.env.SOLANA_RPC_URL
+    },
+    error_file: path.join(logPath, 'jupiter-mcp-error.log'),
+    out_file: path.join(logPath, 'jupiter-mcp-out.log')
   },
   {
     name: 'whale-tracker-mcp',
-    script: path.join(installPath, 'lib', 'whale-tracker-mcp', 'server.py'),
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'whale-tracker-mcp'),
+      'run',
+      'main.py'
+    ],
     tier: 'tier5',
-    interpreter: 'python3',
     ...commonOptions,
     env: {
       ...commonOptions.env,
-      PORT: process.env.WHALE_TRACKER_PORT || 3048,
-      WHALE_ALERT_API_KEY: process.env.WHALE_ALERT_API_KEY, // Needs API tier verification
-      MIN_TRANSACTION_USD: process.env.MIN_WHALE_TRANSACTION || '1000000'
+      PORT: process.env.WHALE_TRACKER_PORT || 3049,
+      WHALE_ALERT_API_KEY: process.env.WHALE_ALERT_API_KEY
     },
-    error_file: path.join(logPath, 'whale-tracker-error.log'),
-    out_file: path.join(logPath, 'whale-tracker-out.log')
+    error_file: path.join(logPath, 'whale-tracker-mcp-error.log'),
+    out_file: path.join(logPath, 'whale-tracker-mcp-out.log')
   },
   {
     name: 'crypto-sentiment-mcp',
-    script: path.join(installPath, 'lib', 'crypto-sentiment-mcp', 'server.py'),
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'crypto-sentiment-mcp'),
+      'run',
+      'main.py'
+    ],
     tier: 'tier5',
-    interpreter: 'python3',
     ...commonOptions,
     env: {
       ...commonOptions.env,
-      PORT: process.env.CRYPTO_SENTIMENT_PORT || 3049,
-      SENTIMENT_API_KEY: process.env.SENTIMENT_API_KEY // Needs API tier verification
+      PORT: process.env.CRYPTO_SENTIMENT_PORT || 3050,
+      SANTIMENT_API_KEY: process.env.SANTIMENT_API_KEY
     },
-    error_file: path.join(logPath, 'crypto-sentiment-error.log'),
-    out_file: path.join(logPath, 'crypto-sentiment-out.log')
+    error_file: path.join(logPath, 'crypto-sentiment-mcp-error.log'),
+    out_file: path.join(logPath, 'crypto-sentiment-mcp-out.log')
   },
 
   // ========== PHASE 5A: NEW WORKING MCPs (2/7) ==========
@@ -725,6 +737,136 @@ const mcps = [
     },
     error_file: path.join(logPath, 'etf-flow-mcp-error.log'),
     out_file: path.join(logPath, 'etf-flow-mcp-out.log')
+  },
+
+  // ========== PHASE 5C: ADDED MISSING MCPs (8/27) ==========
+  // MCPs that were installed as submodules but missing from PM2 config
+  {
+    name: 'uniswap-pools-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'uniswap-pools-mcp'),
+      'run',
+      'main.py'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.UNISWAP_POOLS_PORT || 3061,
+      THEGRAPH_API_KEY: process.env.THEGRAPH_API_KEY
+    },
+    error_file: path.join(logPath, 'uniswap-pools-mcp-error.log'),
+    out_file: path.join(logPath, 'uniswap-pools-mcp-out.log')
+  },
+  {
+    name: 'uniswap-price-mcp',
+    script: path.join(installPath, 'lib', 'uniswap-price-mcp', 'index.js'),
+    tier: 'tier5',
+    interpreter: 'node',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.UNISWAP_PRICE_PORT || 3062,
+      INFURA_PROJECT_ID: process.env.INFURA_API_KEY
+    },
+    error_file: path.join(logPath, 'uniswap-price-mcp-error.log'),
+    out_file: path.join(logPath, 'uniswap-price-mcp-out.log')
+  },
+  {
+    name: 'wallet-inspector-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'wallet-inspector-mcp'),
+      'run',
+      'main.py'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.WALLET_INSPECTOR_PORT || 3063,
+      DUNE_API_KEY: process.env.DUNE_API_KEY
+    },
+    error_file: path.join(logPath, 'wallet-inspector-mcp-error.log'),
+    out_file: path.join(logPath, 'wallet-inspector-mcp-out.log')
+  },
+  {
+    name: 'cryptopanic-mcp-server',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'cryptopanic-mcp-server'),
+      'run',
+      'main.py'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.CRYPTOPANIC_PORT || 3064,
+      CRYPTOPANIC_API_KEY: process.env.CRYPTOPANIC_API_KEY
+    },
+    error_file: path.join(logPath, 'cryptopanic-mcp-server-error.log'),
+    out_file: path.join(logPath, 'cryptopanic-mcp-server-out.log')
+  },
+  {
+    name: 'rug-check-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'rug-check-mcp'),
+      'run',
+      'main.py'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.RUG_CHECK_PORT || 3065,
+      SOLSNIFFER_API_KEY: process.env.SOLSNIFFER_API_KEY
+    },
+    error_file: path.join(logPath, 'rug-check-mcp-error.log'),
+    out_file: path.join(logPath, 'rug-check-mcp-out.log')
+  },
+  {
+    name: 'aave-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'aave-mcp'),
+      'run',
+      'main.py'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.AAVE_PORT || 3066,
+      THEGRAPH_API_KEY: process.env.THEGRAPH_API_KEY
+    },
+    error_file: path.join(logPath, 'aave-mcp-error.log'),
+    out_file: path.join(logPath, 'aave-mcp-out.log')
+  },
+  {
+    name: 'funding-rates-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'funding-rates-mcp'),
+      'run',
+      'funding-rates-mcp'
+    ],
+    tier: 'tier5',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.FUNDING_RATES_PORT || 3067
+    },
+    error_file: path.join(logPath, 'funding-rates-mcp-error.log'),
+    out_file: path.join(logPath, 'funding-rates-mcp-out.log')
   }
 ];
 
