@@ -1,5 +1,5 @@
 # Crypto MCP Suite
-## Ultimate Crypto Intelligence Platform for High-Net-Worth Investors
+## Ultimate Crypto Intelligence Platform
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/version-0.1.0--alpha-blue.svg)](https://github.com/USERNAME/Crypto-MCP-Suite/releases)
