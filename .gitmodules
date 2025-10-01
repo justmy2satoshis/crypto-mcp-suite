@@ -1,0 +1,81 @@
+[submodule "native/lib/aave-mcp"]
+	path = native/lib/aave-mcp
+	url = https://github.com/kukapay/aave-mcp.git
+[submodule "native/lib/bridge-rates-mcp"]
+	path = native/lib/bridge-rates-mcp
+	url = https://github.com/kukapay/bridge-rates-mcp
+[submodule "native/lib/ccxt-mcp"]
+	path = native/lib/ccxt-mcp
+	url = https://github.com/doggybee/mcp-server-ccxt.git
+[submodule "native/lib/chainlist-mcp"]
+	path = native/lib/chainlist-mcp
+	url = https://github.com/kukapay/chainlist-mcp.git
+[submodule "native/lib/crypto-feargreed-mcp"]
+	path = native/lib/crypto-feargreed-mcp
+	url = https://github.com/kukapay/crypto-feargreed-mcp.git
+[submodule "native/lib/crypto-indicators-mcp"]
+	path = native/lib/crypto-indicators-mcp
+	url = https://github.com/kukapay/crypto-indicators-mcp.git
+[submodule "native/lib/crypto-liquidations-mcp"]
+	path = native/lib/crypto-liquidations-mcp
+	url = https://github.com/kukapay/crypto-liquidations-mcp.git
+[submodule "native/lib/crypto-orderbook-mcp"]
+	path = native/lib/crypto-orderbook-mcp
+	url = https://github.com/kukapay/crypto-orderbook-mcp.git
+[submodule "native/lib/cryptopanic-mcp-server"]
+	path = native/lib/cryptopanic-mcp-server
+	url = https://github.com/kukapay/cryptopanic-mcp-server
+[submodule "native/lib/crypto-portfolio-mcp"]
+	path = native/lib/crypto-portfolio-mcp
+	url = https://github.com/kukapay/crypto-portfolio-mcp.git
+[submodule "native/lib/crypto-projects-mcp"]
+	path = native/lib/crypto-projects-mcp
+	url = https://github.com/kukapay/crypto-projects-mcp.git
+[submodule "native/lib/crypto-sentiment-mcp"]
+	path = native/lib/crypto-sentiment-mcp
+	url = https://github.com/kukapay/crypto-sentiment-mcp
+[submodule "native/lib/dao-proposals-mcp"]
+	path = native/lib/dao-proposals-mcp
+	url = https://github.com/kukapay/dao-proposals-mcp.git
+[submodule "native/lib/dex-metrics-mcp"]
+	path = native/lib/dex-metrics-mcp
+	url = https://github.com/kukapay/dex-metrics-mcp.git
+[submodule "native/lib/etf-flow-mcp"]
+	path = native/lib/etf-flow-mcp
+	url = https://github.com/kukapay/etf-flow-mcp.git
+[submodule "native/lib/funding-rates-mcp"]
+	path = native/lib/funding-rates-mcp
+	url = https://github.com/kukapay/funding-rates-mcp.git
+[submodule "native/lib/honeypot-detector-mcp"]
+	path = native/lib/honeypot-detector-mcp
+	url = https://github.com/kukapay/honeypot-detector-mcp.git
+[submodule "native/lib/hyperliquid-whalealert-mcp"]
+	path = native/lib/hyperliquid-whalealert-mcp
+	url = https://github.com/kukapay/hyperliquid-whalealert-mcp.git
+[submodule "native/lib/jupiter-mcp"]
+	path = native/lib/jupiter-mcp
+	url = https://github.com/kukapay/jupiter-mcp
+[submodule "native/lib/memecoin-radar-mcp"]
+	path = native/lib/memecoin-radar-mcp
+	url = https://github.com/kukapay/memecoin-radar-mcp
+[submodule "native/lib/polymarket-predictions-mcp"]
+	path = native/lib/polymarket-predictions-mcp
+	url = https://github.com/kukapay/polymarket-predictions-mcp.git
+[submodule "native/lib/rug-check-mcp"]
+	path = native/lib/rug-check-mcp
+	url = https://github.com/kukapay/rug-check-mcp.git
+[submodule "native/lib/uniswap-pools-mcp"]
+	path = native/lib/uniswap-pools-mcp
+	url = https://github.com/kukapay/uniswap-pools-mcp.git
+[submodule "native/lib/uniswap-price-mcp"]
+	path = native/lib/uniswap-price-mcp
+	url = https://github.com/kukapay/uniswap-price-mcp.git
+[submodule "native/lib/uniswap-trader-mcp"]
+	path = native/lib/uniswap-trader-mcp
+	url = https://github.com/kukapay/uniswap-trader-mcp
+[submodule "native/lib/wallet-inspector-mcp"]
+	path = native/lib/wallet-inspector-mcp
+	url = https://github.com/kukapay/wallet-inspector-mcp.git
+[submodule "native/lib/whale-tracker-mcp"]
+	path = native/lib/whale-tracker-mcp
+	url = https://github.com/kukapay/whale-tracker-mcp

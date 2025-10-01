@@ -5,23 +5,48 @@
 [![Version](https://img.shields.io/badge/version-0.1.0--alpha-blue.svg)](https://github.com/USERNAME/Crypto-MCP-Suite/releases)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-**93% cheaper than Bloomberg Terminal** | **25 Curated MCPs from 98+ Available** | **Production-Ready Architecture**
+**93% cheaper than Bloomberg Terminal** | **27 MCPs with Git Submodules** | **Production-Ready Architecture**
 
 ---
 
 ## 🎯 What is This?
 
-The **Crypto MCP Suite** is a comprehensive crypto intelligence platform that integrates **25 carefully selected Model Context Protocol (MCP) servers** to provide institutional-grade crypto data, analytics, and trading capabilities. Built for high-net-worth investors, this suite delivers Bloomberg Terminal-level insights at a fraction of the cost.
+The **Crypto MCP Suite** is a comprehensive crypto intelligence platform that integrates **27 Model Context Protocol (MCP) servers** to provide institutional-grade crypto data, analytics, and trading capabilities. Built for high-net-worth investors, this suite delivers Bloomberg Terminal-level insights at a fraction of the cost.
 
 ### Key Features
 
-- ✅ **25 Production MCPs**: Curated from 98+ available, 74% rejection rate for quality
-- ✅ **Comprehensive Coverage**: DEX trading, on-chain analytics, sentiment, whale tracking, cross-chain bridges
-- ✅ **93% Cost Savings**: $1,400/month vs Bloomberg Terminal's $24,000/year
-- ✅ **Real-Time Data**: Sub-second latency for price feeds, <2s for analytics
-- ✅ **Multi-Chain Support**: Ethereum, Solana, L2s (Arbitrum, Optimism, Base), 50+ chains
-- ✅ **Enterprise-Grade**: Redis caching (60-80% API cost reduction), PostgreSQL with TimescaleDB for time-series data
-- ✅ **Production-Tested**: 200+ pages of architecture documentation, performance benchmarks for all MCPs
+- ✅ **27 Production MCPs**: 43% coverage of 63 available crypto MCPs, 14 working immediately (52% operational)
+- ✅ **Git Submodule Architecture**: Clean repository structure with all MCPs as submodules pointing to original repos
+- ✅ **Comprehensive Coverage**: DEX trading, on-chain analytics, sentiment, whale tracking, cross-chain bridges, DeFi, prediction markets
+- ✅ **93% Cost Savings**: Free tier options + freemium APIs vs Bloomberg Terminal's $24,000/year
+- ✅ **Real-Time Data**: Sub-second latency for price feeds, liquidation tracking, governance proposals
+- ✅ **Multi-Chain Support**: Ethereum, Solana, BSC, Base, L2s (Arbitrum, Optimism), 50+ chains via Chainlist
+- ✅ **Production-Tested**: Comprehensive inventory documentation, testing results for all 27 MCPs
+
+---
+
+## 📦 Cloning with Git Submodules
+
+**IMPORTANT:** This repository uses git submodules for MCP servers. Clone with `--recurse-submodules`:
+
+```bash
+git clone --recurse-submodules https://github.com/justmy2satoshis/crypto-mcp-suite.git
+```
+
+### If Already Cloned Without Submodules
+
+```bash
+cd crypto-mcp-suite
+git submodule update --init --recursive
+```
+
+### Update All Submodules to Latest
+
+```bash
+git submodule update --remote --merge
+```
+
+**See [SUBMODULE_MAPPING.md](SUBMODULE_MAPPING.md) for complete submodule documentation.**
 
 ---
 
