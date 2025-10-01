@@ -389,10 +389,13 @@ const mcps = [
   // CCXT + Kukapay Suite - Verified free-tier crypto MCPs
   // Ports: 3041-3049
 
+  // ========== PRODUCTION READY: 4/6 MCPs Verified Working ==========
+
   {
     name: 'ccxt-mcp',
-    script: path.join(installPath, 'lib', 'ccxt-mcp', 'server.js'),
+    script: path.join(installPath, 'lib', 'ccxt-mcp', 'build', 'index.js'), // CORRECTED: build/index.js
     tier: 'tier5',
+    interpreter: 'node',
     ...commonOptions,
     env: {
       ...commonOptions.env,
@@ -404,9 +407,9 @@ const mcps = [
   },
   {
     name: 'crypto-indicators-mcp',
-    script: path.join(installPath, 'lib', 'crypto-indicators-mcp', 'server.py'),
+    script: path.join(installPath, 'lib', 'crypto-indicators-mcp', 'index.js'), // CORRECTED: index.js (Node.js, not Python!)
     tier: 'tier5',
-    interpreter: 'python3',
+    interpreter: 'node',
     ...commonOptions,
     env: {
       ...commonOptions.env,
@@ -418,9 +421,14 @@ const mcps = [
   },
   {
     name: 'crypto-feargreed-mcp',
-    script: path.join(installPath, 'lib', 'crypto-feargreed-mcp', 'server.py'),
+    script: 'uv', // CORRECTED: uv command with args, not python
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'crypto-feargreed-mcp'),
+      'run',
+      'main.py'
+    ],
     tier: 'tier5',
-    interpreter: 'python3',
     ...commonOptions,
     env: {
       ...commonOptions.env,
@@ -431,9 +439,9 @@ const mcps = [
   },
   {
     name: 'crypto-portfolio-mcp',
-    script: path.join(installPath, 'lib', 'crypto-portfolio-mcp', 'server.py'),
+    script: path.join(installPath, 'lib', 'crypto-portfolio-mcp', 'main.py'), // CORRECTED: main.py not server.py
     tier: 'tier5',
-    interpreter: 'python3',
+    interpreter: 'python',
     ...commonOptions,
     env: {
       ...commonOptions.env,
@@ -443,25 +451,45 @@ const mcps = [
     error_file: path.join(logPath, 'crypto-portfolio-error.log'),
     out_file: path.join(logPath, 'crypto-portfolio-out.log')
   },
+  // ========== BLOCKED: Paid API Required ==========
+  // HYPERLIQUID: Requires CoinGlass API ($29/month minimum - NO FREE TIER)
+  // Disabled by default - investigating free alternatives
+  /*
   {
     name: 'hyperliquid-whalealert-mcp',
-    script: path.join(installPath, 'lib', 'hyperliquid-whalealert-mcp', 'server.py'),
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'hyperliquid-whalealert-mcp'),
+      'run',
+      'main.py'
+    ],
     tier: 'tier5',
-    interpreter: 'python3',
     ...commonOptions,
     env: {
       ...commonOptions.env,
       PORT: process.env.HYPERLIQUID_WHALE_PORT || 3045,
+      COINGLASS_API_KEY: process.env.COINGLASS_API_KEY, // REQUIRED: $29/month
       MIN_POSITION_SIZE: process.env.HYPERLIQUID_MIN_POSITION || '100000'
     },
     error_file: path.join(logPath, 'hyperliquid-whalealert-error.log'),
     out_file: path.join(logPath, 'hyperliquid-whalealert-out.log')
   },
+  */
+
+  // ========== TESTING: FastMCP stdout Issue ==========
+  // ORDERBOOK: Uses FastMCP framework, may have Windows pipe handling issues
+  // Testing in actual MCP client environment
   {
     name: 'crypto-orderbook-mcp',
-    script: path.join(installPath, 'lib', 'crypto-orderbook-mcp', 'server.py'),
+    script: 'uv', // CORRECTED: uv command with args
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'crypto-orderbook-mcp'),
+      'run',
+      'main.py'
+    ],
     tier: 'tier5',
-    interpreter: 'python3',
     ...commonOptions,
     env: {
       ...commonOptions.env,
