@@ -520,17 +520,31 @@
 
 ---
 
-### 12. Hyperliquid Whale Alert MCP (kukapay) ✅ VERIFIED
+### 12. Hyperliquid Whale Alert MCP (kukapay) ❌ PAID API REQUIRED
 **Repository:** https://github.com/kukapay/hyperliquid-whalealert-mcp
 **License:** Open source (Python-based MCP)
-**Free Tier:** Yes (Hyperliquid API is free)
-**Evidence:** GitHub repo confirmed
+**Free Tier:** ❌ **NO FREE TIER** - Requires paid CoinGlass API
+**API Provider:** CoinGlass (NOT Hyperliquid direct API)
+**Minimum Cost:** $29/month (HOBBYIST plan)
+**Evidence:**
+- README line 17: "CoinGlass API Key: Obtain from CoinGlass (required for API access)"
+- Pricing: https://www.coinglass.com/pricing
+- Verified: 2025-10-01
+
+**CoinGlass API Pricing:**
+- HOBBYIST: $29/month (70+ endpoints, 30 req/min)
+- STARTUP: $79/month (80+ endpoints, 80 req/min)
+- STANDARD: $299/month (90+ endpoints, 300 req/min)
+- PROFESSIONAL: $699/month (100+ endpoints, 1200 req/min)
+- ENTERPRISE: Custom pricing (6000 req/min)
+
 **Features:**
 - Real-time whale alerts on Hyperliquid DEX
 - Large position monitoring
 - Hyperliquid-specific whale tracking
+- Requires CoinGlass API subscription
 
-**Status:** ✅ **READY TO ADD** (Priority 3 - DEX specific)
+**Status:** ❌ **NOT FREE** - Remove from free-tier suite or move to Tier 6 (Paid APIs)
 
 ---
 
@@ -542,7 +556,7 @@
 1. ✅ Crypto Indicators MCP - Free (local calculation)
 2. ✅ Crypto Fear & Greed Index MCP - Free (no key)
 3. ✅ Crypto Portfolio MCP - Free (local tracking)
-4. ✅ Hyperliquid Whale Alert MCP - Free (Hyperliquid API)
+4. ❌ Hyperliquid Whale Alert MCP - **PAID** (CoinGlass API $29/mo minimum)
 5. ✅ Crypto Orderbook MCP - Free (uses CCXT)
 
 **Ready to Add (Free API keys with registration):** ✅ VERIFIED
@@ -574,7 +588,7 @@
 13. Crypto Indicators MCP (kukapay) ✅ (No key, local calculation)
 14. Crypto Fear & Greed Index MCP (kukapay) ✅ (No key)
 15. Crypto Portfolio MCP (kukapay) ✅ (No key, local tracking)
-16. Hyperliquid Whale Alert MCP (kukapay) ✅ (Free Hyperliquid API)
+16. Hyperliquid Whale Alert MCP (kukapay) ❌ (PAID - CoinGlass $29/mo)
 17. Crypto Orderbook MCP (kukapay) ✅ (Uses CCXT)
 18. CryptoPanic MCP (kukapay) ✅ **VERIFIED** (Free CryptoPanic API key)
 19. Whale Tracker MCP (kukapay) ✅ **VERIFIED** (Free Whale Alert API, 10 req/min)
