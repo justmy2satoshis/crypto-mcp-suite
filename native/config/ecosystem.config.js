@@ -3,16 +3,17 @@
  * Version: 0.2.0-alpha
  * Platform: Windows 10/11 (Windows-First Release)
  *
- * This file configures all 34 MCPs for PM2 process management.
+ * This file configures all 27 crypto MCPs for PM2 process management.
  * Tier-based startup controlled by INSTALLATION_TIER environment variable.
  *
- * UPDATE: Added Tier 5 with CCXT + Kukapay suite (9 new crypto MCPs)
+ * Phase 5C: All 27 MCPs configured with proper API key environment variables
  */
-
-require('dotenv').config();
 
 const path = require('path');
 const os = require('os');
+
+// Load environment variables from root .env.local (contains all API keys)
+require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env.local') });
 
 // Installation paths
 const installPath = process.env.CRYPTO_MCP_INSTALL_PATH || path.join(os.homedir(), 'AppData', 'Local', 'crypto-mcp');
