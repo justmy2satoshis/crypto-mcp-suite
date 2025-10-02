@@ -1,0 +1,440 @@
+{
+  "mcpServers": {
+    "_comment_tier5": "========== TIER 5: Crypto MCPs (36 MCPs) ==========",
+
+    "ccxt-mcp": {
+      "command": "node",
+      "args": [
+        "/Users/username/crypto-mcp-suite/native/lib/ccxt-mcp/build/index.js"
+      ],
+      "env": {
+        "NODE_NO_WARNINGS": "1",
+        "EXCHANGE_API_KEYS": "{}"
+      }
+    },
+
+    "crypto-indicators-mcp": {
+      "command": "node",
+      "args": [
+        "/Users/username/crypto-mcp-suite/native/lib/crypto-indicators-mcp/index.js"
+      ],
+      "env": {
+        "NODE_NO_WARNINGS": "1"
+      }
+    },
+
+    "crypto-feargreed-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/crypto-feargreed-mcp",
+        "run",
+        "main.py"
+      ]
+    },
+
+    "crypto-portfolio-mcp": {
+      "command": "python3",
+      "args": [
+        "/Users/username/crypto-mcp-suite/native/lib/crypto-portfolio-mcp/main.py"
+      ]
+    },
+
+    "crypto-orderbook-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/crypto-orderbook-mcp",
+        "run",
+        "main.py"
+      ]
+    },
+
+    "uniswap-trader-mcp": {
+      "command": "node",
+      "args": [
+        "/Users/username/crypto-mcp-suite/native/lib/uniswap-trader-mcp/index.js"
+      ],
+      "env": {
+        "NODE_NO_WARNINGS": "1",
+        "INFURA_API_KEY": "${INFURA_API_KEY}",
+        "INFURA_ENDPOINT": "${INFURA_ENDPOINT}"
+      }
+    },
+
+    "jupiter-mcp": {
+      "command": "node",
+      "args": [
+        "/Users/username/crypto-mcp-suite/native/lib/jupiter-mcp/index.js"
+      ],
+      "env": {
+        "NODE_NO_WARNINGS": "1",
+        "SOLANA_RPC_URL": "${SOLANA_RPC_URL}"
+      }
+    },
+
+    "whale-tracker-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/whale-tracker-mcp",
+        "run",
+        "main.py"
+      ],
+      "env": {
+        "WHALE_ALERT_API_KEY": "${WHALE_ALERT_API_KEY}"
+      }
+    },
+
+    "crypto-sentiment-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/crypto-sentiment-mcp",
+        "run",
+        "main.py"
+      ],
+      "env": {
+        "SANTIMENT_API_KEY": "${SANTIMENT_API_KEY}"
+      }
+    },
+
+    "bridge-rates-mcp": {
+      "command": "node",
+      "args": [
+        "/Users/username/crypto-mcp-suite/native/lib/bridge-rates-mcp/index.js"
+      ],
+      "env": {
+        "NODE_NO_WARNINGS": "1"
+      }
+    },
+
+    "memecoin-radar-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/memecoin-radar-mcp",
+        "run",
+        "main.py"
+      ]
+    },
+
+    "dex-metrics-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/dex-metrics-mcp",
+        "run",
+        "main.py"
+      ]
+    },
+
+    "honeypot-detector-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/honeypot-detector-mcp",
+        "run",
+        "main.py"
+      ]
+    },
+
+    "chainlist-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/chainlist-mcp",
+        "run",
+        "main.py"
+      ]
+    },
+
+    "crypto-liquidations-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/crypto-liquidations-mcp",
+        "run",
+        "main.py"
+      ]
+    },
+
+    "dao-proposals-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/dao-proposals-mcp",
+        "run",
+        "main.py"
+      ]
+    },
+
+    "polymarket-predictions-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/polymarket-predictions-mcp",
+        "run",
+        "main.py"
+      ]
+    },
+
+    "crypto-projects-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/crypto-projects-mcp",
+        "run",
+        "main.py"
+      ]
+    },
+
+    "etf-flow-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/etf-flow-mcp",
+        "run",
+        "etf-flow-mcp"
+      ]
+    },
+
+    "uniswap-pools-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/uniswap-pools-mcp",
+        "run",
+        "main.py"
+      ],
+      "env": {
+        "THEGRAPH_API_KEY": "${THEGRAPH_API_KEY}"
+      }
+    },
+
+    "uniswap-price-mcp": {
+      "command": "node",
+      "args": [
+        "/Users/username/crypto-mcp-suite/native/lib/uniswap-price-mcp/index.js"
+      ],
+      "env": {
+        "NODE_NO_WARNINGS": "1",
+        "INFURA_PROJECT_ID": "${INFURA_API_KEY}"
+      }
+    },
+
+    "wallet-inspector-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/wallet-inspector-mcp",
+        "run",
+        "main.py"
+      ],
+      "env": {
+        "DUNE_API_KEY": "${DUNE_API_KEY}"
+      }
+    },
+
+    "cryptopanic-mcp-server": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/cryptopanic-mcp-server",
+        "run",
+        "main.py"
+      ],
+      "env": {
+        "CRYPTOPANIC_API_KEY": "${CRYPTOPANIC_API_KEY}"
+      }
+    },
+
+    "rug-check-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/rug-check-mcp",
+        "run",
+        "main.py"
+      ],
+      "env": {
+        "SOLSNIFFER_API_KEY": "${SOLSNIFFER_API_KEY}"
+      }
+    },
+
+    "aave-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/aave-mcp",
+        "run",
+        "main.py"
+      ],
+      "env": {
+        "THEGRAPH_API_KEY": "${THEGRAPH_API_KEY}"
+      }
+    },
+
+    "funding-rates-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/funding-rates-mcp",
+        "run",
+        "funding-rates-mcp"
+      ]
+    },
+
+    "defi-yields-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/defi-yields-mcp",
+        "run",
+        "defi-yields-mcp"
+      ]
+    },
+
+    "nft-analytics-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/nft-analytics-mcp",
+        "run",
+        "nft-analytics-mcp"
+      ]
+    },
+
+    "bitcoin-utxo-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/bitcoin-utxo-mcp",
+        "run",
+        "bitcoin-utxo-mcp"
+      ]
+    },
+
+    "hyperliquid-info-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/hyperliquid-info-mcp",
+        "run",
+        "hyperliquid-info-mcp"
+      ]
+    },
+
+    "binance-alpha-mcp": {
+      "command": "node",
+      "args": [
+        "/Users/username/crypto-mcp-suite/native/lib/binance-alpha-mcp/index.js"
+      ],
+      "env": {
+        "NODE_NO_WARNINGS": "1"
+      }
+    },
+
+    "ens-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/ens-mcp",
+        "run",
+        "ens-mcp"
+      ],
+      "env": {
+        "INFURA_PROJECT_ID": "${INFURA_PROJECT_ID}"
+      }
+    },
+
+    "pumpfun-wallets-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/pumpfun-wallets-mcp",
+        "run",
+        "pumpfun-wallets-mcp"
+      ],
+      "env": {
+        "SOLANA_RPC_URL": "https://api.mainnet-beta.solana.com"
+      }
+    },
+
+    "sui-trader-mcp": {
+      "command": "node",
+      "args": [
+        "/Users/username/crypto-mcp-suite/native/lib/sui-trader-mcp/index.js"
+      ],
+      "env": {
+        "NODE_NO_WARNINGS": "1"
+      }
+    },
+
+    "raydium-launchlab-mcp": {
+      "command": "node",
+      "args": [
+        "/Users/username/crypto-mcp-suite/native/lib/raydium-launchlab-mcp/index.js"
+      ],
+      "env": {
+        "NODE_NO_WARNINGS": "1",
+        "SOLANA_RPC_URL": "https://api.mainnet-beta.solana.com"
+      }
+    },
+
+    "_comment_tier6": "========== TIER 6: Premium AI & Research MCPs (5 MCPs) ==========",
+
+    "tokenmetrics-mcp": {
+      "command": "node",
+      "args": [
+        "/Users/username/crypto-mcp-suite/native/lib/tokenmetrics-mcp/build/src/cli.js"
+      ],
+      "env": {
+        "NODE_NO_WARNINGS": "1",
+        "TOKENMETRICS_API_KEY": "${TOKENMETRICS_API_KEY}"
+      }
+    },
+
+    "lunarcrush-mcp": {
+      "command": "node",
+      "args": [
+        "/Users/username/crypto-mcp-suite/native/lib/lunarcrush-mcp/index.js"
+      ],
+      "env": {
+        "NODE_NO_WARNINGS": "1",
+        "LUNARCRUSH_API_KEY": "${LUNARCRUSH_API_KEY}"
+      }
+    },
+
+    "ethereum-validator-queue-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/ethereum-validator-queue-mcp",
+        "run",
+        "python3",
+        "main.py"
+      ]
+    },
+
+    "crypto-rss-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/crypto-rss-mcp",
+        "run",
+        "crypto-rss-mcp"
+      ]
+    },
+
+    "crypto-whitepapers-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/username/crypto-mcp-suite/native/lib/crypto-whitepapers-mcp",
+        "run",
+        "crypto-whitepapers-mcp"
+      ]
+    }
+  }
+}

@@ -23,6 +23,8 @@
 ### Legend
 - **Tier:** FREE (no API keys) | FREEMIUM (free tier available) | PAID (API key required, may have free tier)
 - **Runtime:** Node.js | Python (uv)
+- **Transport:** stdio (Standard Input/Output) - All MCPs use stdio transport
+- **Client Support:** Desktop (Claude Desktop) | Code (Claude Code CLI) | Both
 - **Dependencies:** Count of required packages (excluding dev dependencies)
 - **Status:** ✅ Production Ready | ⚠️ Requires Config | ❌ Known Issues
 
@@ -30,54 +32,54 @@
 
 ### Tier 5 MCPs (36 Total)
 
-| # | MCP Name | Tier | Runtime | Dependencies | API Keys Required | Primary Function | Status | Known Issues |
-|---|----------|------|---------|--------------|-------------------|------------------|--------|--------------|
-| 1 | **bridge-rates-mcp** | FREE | Node.js | 2 (@lifi/sdk, mcp) | None | Cross-chain bridge rate aggregation | ✅ | None |
-| 2 | **ccxt-mcp** | FREE | Node.js (TS) | 6 + 2 dev (ccxt, dotenv, lru-cache, p-queue, rxjs, zod) | None | Multi-exchange trading data via CCXT | ✅ | Requires `npm run build` |
-| 3 | **crypto-indicators-mcp** | FREE | Node.js | 3 (indicatorts, trading-indicator, undici) | None | Technical analysis indicators (RSI, MACD, etc.) | ✅ | None |
-| 4 | **binance-alpha-mcp** | FREEMIUM | Node.js | 4 (mcp, dotenv, ethers, zod) | BINANCE_API_KEY (optional) | Binance Alpha project launches | ✅ | Optional API key for higher limits |
-| 5 | **uniswap-trader-mcp** | PAID | Node.js | 6 (@uniswap/smart-order-router, @uniswap/v3-sdk, dotenv, ethers, tslib, zod) | INFURA_API_KEY + WALLET_PRIVATE_KEY | Uniswap V3 token swaps | ⚠️ | Requires test wallet |
-| 6 | **jupiter-mcp** | PAID | Node.js | 6 (@solana/spl-token, @solana/web3.js, bigint-buffer, dotenv, undici, zod) | PRIVATE_KEY (Solana) | Solana Jupiter DEX swaps | ⚠️ | Requires test wallet |
-| 7 | **uniswap-price-mcp** | FREEMIUM | Node.js | 6 (@thanpolas/univ3prices, dotenv, ethers, https-proxy-agent, zod) | INFURA_API_KEY (free 100k req/day) | Uniswap V3 real-time pricing | ✅ | None |
-| 8 | **sui-trader-mcp** | FREE | Node.js | 4 (@cetusprotocol/aggregator-sdk, bn.js, dotenv, zod) | None | Sui blockchain token swaps | ✅ | None |
-| 9 | **raydium-launchlab-mcp** | FREE | Node.js | 6 (@raydium-io/raydium-sdk-v2, @solana/spl-token, @solana/web3.js, dotenv, https-proxy-agent, pinata) | None | Raydium LaunchLab analytics | ✅ | None |
-| 10 | **aave-mcp** | FREEMIUM | Python | 1 (mcp) | THEGRAPH_API_KEY (free tier) | Aave protocol analytics via TheGraph | ✅ | None |
-| 11 | **chainlist-mcp** | FREE | Python | 2 (mcp, tabulate) | None | EVM chain directory & RPC endpoints | ✅ | None |
-| 12 | **crypto-feargreed-mcp** | FREE | Python | 2 (httpx, mcp) | None | Crypto Fear & Greed Index (real-time + historical) | ✅ | None |
-| 13 | **crypto-liquidations-mcp** | FREE | Python | 2 (mcp, websockets) | None | Real-time liquidation events (Binance) | ✅ | None |
-| 14 | **crypto-orderbook-mcp** | FREE | Python | 4 (ccxt, mcp, pandas, tabulate) | None | Multi-exchange orderbook depth analysis | ✅ | None |
-| 15 | **cryptopanic-mcp-server** | FREEMIUM | Python | 3 (dotenv, mcp, requests) | CRYPTOPANIC_API_KEY (free tier) | Crypto news aggregation | ✅ | None |
-| 16 | **crypto-portfolio-mcp** | FREE | Python | 3 (ccxt, matplotlib, mcp) | None | Portfolio allocation tracking & analysis | ✅ | None |
-| 17 | **crypto-projects-mcp** | FREE | Python | 1 (mcp) | None | Cryptocurrency project data directory | ✅ | None |
-| 18 | **crypto-sentiment-mcp** | FREEMIUM | Python | 2 (mcp, sanpy) | SANTIMENT_API_KEY (free tier) | Social sentiment analysis via Santiment | ✅ | None |
-| 19 | **dao-proposals-mcp** | FREE | Python | 1 (mcp) | None | DAO governance proposal tracking | ✅ | None |
-| 20 | **dex-metrics-mcp** | FREE | Python | 3 (mcp, pandas, tabulate) | None | DEX trading metrics & analytics | ✅ | None |
-| 21 | **etf-flow-mcp** | FREE | Python | 3 (dotenv, mcp, pandas) | None | Crypto ETF flow data tracking | ✅ | None |
-| 22 | **funding-rates-mcp** | FREE | Python | 6 (cachetools, ccxt, dotenv, mcp, pandas, tabulate) | None | Perpetual futures funding rates (arbitrage) | ✅ | None |
-| 23 | **honeypot-detector-mcp** | FREE | Python | 1 (mcp) | None | Token honeypot scam detection | ✅ | None |
-| 24 | **hyperliquid-whalealert-mcp** | FREEMIUM | Python | 2 (mcp, python-dotenv) | COINGLASS_API_KEY (optional) | Hyperliquid large position alerts | ✅ | API key optional |
-| 25 | **memecoin-radar-mcp** | FREE | Python | 2 (mcp, tabulate) | None | Memecoin trending & analytics | ✅ | None |
-| 26 | **polymarket-predictions-mcp** | FREE | Python | 2 (mcp, tabulate) | None | Polymarket prediction market data | ✅ | None |
-| 27 | **rug-check-mcp** | FREEMIUM | Python | 3 (dotenv, mcp, requests) | SOLSNIFFER_API_KEY (free tier) | Solana token rug pull detection | ✅ | None |
-| 28 | **uniswap-pools-mcp** | FREEMIUM | Python | 3 (mcp, pandas, tabulate) | THEGRAPH_API_KEY (free tier) | Uniswap pool analytics via TheGraph | ✅ | None |
-| 29 | **wallet-inspector-mcp** | FREEMIUM | Python | 3 (mcp, python-dotenv, tabulate) | DUNE_API_KEY (free tier) | Wallet analytics via Dune | ✅ | None |
-| 30 | **whale-tracker-mcp** | FREEMIUM | Python | 2 (httpx, mcp) | WHALE_ALERT_API_KEY (free tier) | Large transaction tracking | ✅ | None |
-| 31 | **defi-yields-mcp** | FREE | Python | 1 (mcp) | None | DeFi yield aggregation (DefiLlama) | ✅ | None |
-| 32 | **nft-analytics-mcp** | FREEMIUM | Python | 3 (mcp, pandas, tabulate) | RESERVOIR_API_KEY (optional, 20k req/month free) | NFT market analytics | ✅ | None |
-| 33 | **bitcoin-utxo-mcp** | FREE | Python | 1 (mcp) | None | Bitcoin UTXO analytics (blockchain.info) | ✅ | None |
-| 34 | **hyperliquid-info-mcp** | FREE | Python | 4 (hyperliquid-python-sdk, iso8601, mcp, pillow) | None | Hyperliquid market data | ✅ | None |
-| 35 | **ens-mcp** | FREE | Python | 2 (gql[all], mcp) | None | ENS name resolution (TheGraph public) | ✅ | None |
-| 36 | **pumpfun-wallets-mcp** | FREE | Python | 2 (mcp, tabulate) | None | Pump.fun wallet tracking | ✅ | None |
+| # | MCP Name | Tier | Runtime | Transport | Client Support | Dependencies | API Keys Required | Primary Function | Status | Known Issues |
+|---|----------|------|---------|-----------|----------------|--------------|-------------------|------------------|--------|--------------|
+| 1 | **bridge-rates-mcp** | FREE | Node.js | stdio | Both | 2 (@lifi/sdk, mcp) | None | Cross-chain bridge rate aggregation | ✅ | None |
+| 2 | **ccxt-mcp** | FREE | Node.js (TS) | stdio | Both | 6 + 2 dev (ccxt, dotenv, lru-cache, p-queue, rxjs, zod) | None | Multi-exchange trading data via CCXT | ✅ | Requires `npm run build` |
+| 3 | **crypto-indicators-mcp** | FREE | Node.js | stdio | Both | 3 (indicatorts, trading-indicator, undici) | None | Technical analysis indicators (RSI, MACD, etc.) | ✅ | None |
+| 4 | **binance-alpha-mcp** | FREEMIUM | Node.js | stdio | Both | 4 (mcp, dotenv, ethers, zod) | BINANCE_API_KEY (optional) | Binance Alpha project launches | ✅ | Optional API key for higher limits |
+| 5 | **uniswap-trader-mcp** | PAID | Node.js | stdio | Both | 6 (@uniswap/smart-order-router, @uniswap/v3-sdk, dotenv, ethers, tslib, zod) | INFURA_API_KEY + WALLET_PRIVATE_KEY | Uniswap V3 token swaps | ⚠️ | Requires test wallet |
+| 6 | **jupiter-mcp** | PAID | Node.js | stdio | Both | 6 (@solana/spl-token, @solana/web3.js, bigint-buffer, dotenv, undici, zod) | PRIVATE_KEY (Solana) | Solana Jupiter DEX swaps | ⚠️ | Requires test wallet |
+| 7 | **uniswap-price-mcp** | FREEMIUM | Node.js | stdio | Both | 6 (@thanpolas/univ3prices, dotenv, ethers, https-proxy-agent, zod) | INFURA_API_KEY (free 100k req/day) | Uniswap V3 real-time pricing | ✅ | None |
+| 8 | **sui-trader-mcp** | FREE | Node.js | stdio | Both | 4 (@cetusprotocol/aggregator-sdk, bn.js, dotenv, zod) | None | Sui blockchain token swaps | ✅ | None |
+| 9 | **raydium-launchlab-mcp** | FREE | Node.js | stdio | Both | 6 (@raydium-io/raydium-sdk-v2, @solana/spl-token, @solana/web3.js, dotenv, https-proxy-agent, pinata) | None | Raydium LaunchLab analytics | ✅ | None |
+| 10 | **aave-mcp** | FREEMIUM | Python | stdio | Both | 1 (mcp) | THEGRAPH_API_KEY (free tier) | Aave protocol analytics via TheGraph | ✅ | None |
+| 11 | **chainlist-mcp** | FREE | Python | stdio | Both | 2 (mcp, tabulate) | None | EVM chain directory & RPC endpoints | ✅ | None |
+| 12 | **crypto-feargreed-mcp** | FREE | Python | stdio | Both | 2 (httpx, mcp) | None | Crypto Fear & Greed Index (real-time + historical) | ✅ | None |
+| 13 | **crypto-liquidations-mcp** | FREE | Python | stdio | Both | 2 (mcp, websockets) | None | Real-time liquidation events (Binance) | ✅ | None |
+| 14 | **crypto-orderbook-mcp** | FREE | Python | stdio | Both | 4 (ccxt, mcp, pandas, tabulate) | None | Multi-exchange orderbook depth analysis | ✅ | None |
+| 15 | **cryptopanic-mcp-server** | FREEMIUM | Python | stdio | Both | 3 (dotenv, mcp, requests) | CRYPTOPANIC_API_KEY (free tier) | Crypto news aggregation | ✅ | None |
+| 16 | **crypto-portfolio-mcp** | FREE | Python | stdio | Both | 3 (ccxt, matplotlib, mcp) | None | Portfolio allocation tracking & analysis | ✅ | None |
+| 17 | **crypto-projects-mcp** | FREE | Python | stdio | Both | 1 (mcp) | None | Cryptocurrency project data directory | ✅ | None |
+| 18 | **crypto-sentiment-mcp** | FREEMIUM | Python | stdio | Both | 2 (mcp, sanpy) | SANTIMENT_API_KEY (free tier) | Social sentiment analysis via Santiment | ✅ | None |
+| 19 | **dao-proposals-mcp** | FREE | Python | stdio | Both | 1 (mcp) | None | DAO governance proposal tracking | ✅ | None |
+| 20 | **dex-metrics-mcp** | FREE | Python | stdio | Both | 3 (mcp, pandas, tabulate) | None | DEX trading metrics & analytics | ✅ | None |
+| 21 | **etf-flow-mcp** | FREE | Python | stdio | Both | 3 (dotenv, mcp, pandas) | None | Crypto ETF flow data tracking | ✅ | None |
+| 22 | **funding-rates-mcp** | FREE | Python | stdio | Both | 6 (cachetools, ccxt, dotenv, mcp, pandas, tabulate) | None | Perpetual futures funding rates (arbitrage) | ✅ | None |
+| 23 | **honeypot-detector-mcp** | FREE | Python | stdio | Both | 1 (mcp) | None | Token honeypot scam detection | ✅ | None |
+| 24 | **hyperliquid-whalealert-mcp** | FREEMIUM | Python | stdio | Both | 2 (mcp, python-dotenv) | COINGLASS_API_KEY (optional) | Hyperliquid large position alerts | ✅ | API key optional |
+| 25 | **memecoin-radar-mcp** | FREE | Python | stdio | Both | 2 (mcp, tabulate) | None | Memecoin trending & analytics | ✅ | None |
+| 26 | **polymarket-predictions-mcp** | FREE | Python | stdio | Both | 2 (mcp, tabulate) | None | Polymarket prediction market data | ✅ | None |
+| 27 | **rug-check-mcp** | FREEMIUM | Python | stdio | Both | 3 (dotenv, mcp, requests) | SOLSNIFFER_API_KEY (free tier) | Solana token rug pull detection | ✅ | None |
+| 28 | **uniswap-pools-mcp** | FREEMIUM | Python | stdio | Both | 3 (mcp, pandas, tabulate) | THEGRAPH_API_KEY (free tier) | Uniswap pool analytics via TheGraph | ✅ | None |
+| 29 | **wallet-inspector-mcp** | FREEMIUM | Python | stdio | Both | 3 (mcp, python-dotenv, tabulate) | DUNE_API_KEY (free tier) | Wallet analytics via Dune | ✅ | None |
+| 30 | **whale-tracker-mcp** | FREEMIUM | Python | stdio | Both | 2 (httpx, mcp) | WHALE_ALERT_API_KEY (free tier) | Large transaction tracking | ✅ | None |
+| 31 | **defi-yields-mcp** | FREE | Python | stdio | Both | 1 (mcp) | None | DeFi yield aggregation (DefiLlama) | ✅ | None |
+| 32 | **nft-analytics-mcp** | FREEMIUM | Python | stdio | Both | 3 (mcp, pandas, tabulate) | RESERVOIR_API_KEY (optional, 20k req/month free) | NFT market analytics | ✅ | None |
+| 33 | **bitcoin-utxo-mcp** | FREE | Python | stdio | Both | 1 (mcp) | None | Bitcoin UTXO analytics (blockchain.info) | ✅ | None |
+| 34 | **hyperliquid-info-mcp** | FREE | Python | stdio | Both | 4 (hyperliquid-python-sdk, iso8601, mcp, pillow) | None | Hyperliquid market data | ✅ | None |
+| 35 | **ens-mcp** | FREE | Python | stdio | Both | 2 (gql[all], mcp) | None | ENS name resolution (TheGraph public) | ✅ | None |
+| 36 | **pumpfun-wallets-mcp** | FREE | Python | stdio | Both | 2 (mcp, tabulate) | None | Pump.fun wallet tracking | ✅ | None |
 
 ### Tier 6 MCPs - Premium AI Analytics (5 Total)
 
-| # | MCP Name | Tier | Runtime | Dependencies | API Keys Required | Primary Function | Status | Known Issues |
-|---|----------|------|---------|--------------|-------------------|------------------|--------|--------------|
-| 37 | **tokenmetrics-mcp** | FREEMIUM | Node.js (TS) | 6 + 10 dev (axios, cors, express, zod) | TOKENMETRICS_API_KEY (FREE tier) | AI-powered token analytics & signals | ✅ | Requires `npm run build`, FREE tier available |
-| 38 | **lunarcrush-mcp** | FREEMIUM | Node.js | 2 (mcp, zod) | LUNARCRUSH_API_KEY (FREE 50 req/day) | Social intelligence & sentiment tracking | ✅ | FREE tier limited to 50 requests/day |
-| 39 | **ethereum-validator-queue-mcp** | FREEMIUM | Python | 1 (mcp) | BEACONCHAIN_API_KEY (optional, 100 req/day free) | ETH validator queue analytics | ✅ | None |
-| 40 | **crypto-rss-mcp** | FREE | Python | 4 (feedparser, html2text, mcp, opml) | None | Customizable RSS feed aggregation | ✅ | None |
-| 41 | **crypto-whitepapers-mcp** | FREE | Python | 8 (agno, duckduckgo-search, fastembed, lancedb, mcp, numpy, pandas, pypdf) | None | Whitepaper research & knowledge base | ✅ | None |
+| # | MCP Name | Tier | Runtime | Transport | Client Support | Dependencies | API Keys Required | Primary Function | Status | Known Issues |
+|---|----------|------|---------|-----------|----------------|--------------|-------------------|------------------|--------|--------------|
+| 37 | **tokenmetrics-mcp** | FREEMIUM | Node.js (TS) | stdio | Both | 6 + 10 dev (axios, cors, express, zod) | TOKENMETRICS_API_KEY (FREE tier) | AI-powered token analytics & signals | ✅ | Requires `npm run build`, FREE tier available |
+| 38 | **lunarcrush-mcp** | FREEMIUM | Node.js | stdio | Both | 2 (mcp, zod) | LUNARCRUSH_API_KEY (FREE 50 req/day) | Social intelligence & sentiment tracking | ✅ | FREE tier limited to 50 requests/day |
+| 39 | **ethereum-validator-queue-mcp** | FREEMIUM | Python | stdio | Both | 1 (mcp) | BEACONCHAIN_API_KEY (optional, 100 req/day free) | ETH validator queue analytics | ✅ | None |
+| 40 | **crypto-rss-mcp** | FREE | Python | stdio | Both | 4 (feedparser, html2text, mcp, opml) | None | Customizable RSS feed aggregation | ✅ | None |
+| 41 | **crypto-whitepapers-mcp** | FREE | Python | stdio | Both | 8 (agno, duckduckgo-search, fastembed, lancedb, mcp, numpy, pandas, pypdf) | None | Whitepaper research & knowledge base | ✅ | None |
 
 ---
 

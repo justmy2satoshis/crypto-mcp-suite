@@ -414,35 +414,157 @@ For production deployments, follow our **5-phase validation framework** (30-60 m
 
 ---
 
+## Client Configuration
+
+### Overview
+
+After installing MCPs server-side with PM2, you need to configure **client connections** for:
+- ✅ **Claude Desktop** - MCP support via `claude_desktop_config.json`
+- ✅ **Claude Code CLI** - MCP support via `.mcp.json`
+
+**Key Point:** Clients spawn **independent MCP processes** (not connected to PM2). PM2 is for server-side development and monitoring only.
+
+### Step 1: Choose Client Configuration Template
+
+All 41 crypto MCPs use **stdio transport** (100% client compatibility).
+
+| Client | Config File | Location |
+|--------|-------------|----------|
+| **Claude Desktop (Windows)** | `configs/claude_desktop_config_windows.json` | `%APPDATA%\Claude\claude_desktop_config.json` |
+| **Claude Desktop (Linux)** | `configs/claude_desktop_config_linux.json` | `~/.config/Claude/claude_desktop_config.json` |
+| **Claude Desktop (macOS)** | `configs/claude_desktop_config_macos.json` | `~/Library/Application Support/Claude/claude_desktop_config.json` |
+| **Claude Code CLI** | `configs/.mcp.json` | Project root or `~/.mcp.json` |
+
+### Step 2: Install Configuration
+
+```bash
+# Windows (PowerShell) - Claude Desktop
+Copy-Item "configs\claude_desktop_config_windows.json" "$env:APPDATA\Claude\claude_desktop_config.json"
+
+# Linux - Claude Desktop
+cp configs/claude_desktop_config_linux.json ~/.config/Claude/claude_desktop_config.json
+
+# macOS - Claude Desktop
+cp configs/claude_desktop_config_macos.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
+
+# Claude Code CLI (any platform)
+cp configs/.mcp.json .mcp.json
+```
+
+### Step 3: Customize Paths
+
+Edit the installed configuration file and replace placeholder paths with your actual installation directory:
+
+**Windows Example:**
+```json
+"C:\\Users\\User\\mcp-servers\\Crypto MCPs\\Crypto-MCP-Suite\\native\\lib\\ccxt-mcp\\build\\index.js"
+```
+
+**Linux Example:**
+```json
+"/home/deploy/workcraft-mcp/native/lib/ccxt-mcp/build/index.js"
+```
+
+**macOS Example:**
+```json
+"/Users/username/crypto-mcp-suite/native/lib/ccxt-mcp/build/index.js"
+```
+
+### Step 4: Test Client Connectivity
+
+**Automated Testing:**
+```bash
+# Test Claude Desktop configuration
+node scripts/test-client-connections.js --config "$env:APPDATA\Claude\claude_desktop_config.json"  # Windows
+node scripts/test-client-connections.js --config ~/.config/Claude/claude_desktop_config.json      # Linux/macOS
+
+# Test Claude Code CLI configuration
+node scripts/test-client-connections.js --config .mcp.json
+```
+
+**Expected Output:**
+```
+==========================================
+Crypto MCP Suite - Client Connection Test
+==========================================
+
+ℹ️  INFO: Testing configuration: .mcp.json
+ℹ️  INFO: Found 41 MCP servers configured
+
+Testing MCP connections...
+
+✅ PASS: ccxt-mcp - Reachable (stdio transport)
+✅ PASS: chainlist-mcp - Reachable (stdio transport)
+✅ PASS: tokenmetrics-mcp - Reachable (stdio transport)
+...
+
+==========================================
+Connection Test Summary
+==========================================
+Passed: 41/41 MCPs
+Failed: 0/41 MCPs
+Warnings: 0 checks
+
+Connection Health Score: 100%
+
+✅ PERFECT CONNECTIVITY - All MCPs are reachable!
+```
+
+### Step 5: Restart Client
+
+- **Claude Desktop:** Quit and restart the application completely
+- **Claude Code CLI:** Configuration auto-detected on next session (no restart needed)
+
+### Deployment Tiers
+
+Configure a subset of MCPs based on your needs:
+
+- **FREE Tier** (25 MCPs, 0 API keys) - Only MCPs without API requirements
+- **FREEMIUM Tier** (35 MCPs, free API tiers) - Includes TokenMetrics/LunarCrush free tiers
+- **FULL Tier** (41 MCPs, all features) - Complete suite with all API keys configured
+
+### Comprehensive Documentation
+
+- **[Client Setup Guide](docs/CLIENT_SETUP_GUIDE.md)** - 7-section comprehensive guide with architecture diagrams and troubleshooting
+- **[Configuration Templates](configs/)** - OS-specific config files with detailed README
+- **[Transport Types Audit](docs/MCP_TRANSPORT_TYPES.md)** - Complete 41-MCP transport analysis
+
+### Client Connection Troubleshooting
+
+**Issue: MCPs not appearing in client**
+
+**Solution:**
+1. Verify configuration file is in correct location
+2. Check JSON syntax (use `jq` or online validator)
+3. Ensure all paths are absolute (not relative)
+4. Restart client completely
+
+**Issue: "Command not found" errors**
+
+**Solution:**
+1. Verify `node` is in PATH: `node --version`
+2. Verify `uv` is installed: `uv --version`
+3. Windows: Use full path to uv.exe: `C:\\Users\\User\\.local\\bin\\uv.exe`
+
+**Issue: Module not found errors**
+
+**Solution:**
+1. Node.js MCPs: Run `npm install` in MCP directory
+2. Python MCPs: Run `uv sync` in MCP directory
+3. TypeScript MCPs: Run `npm run build` and verify build output exists
+
+For detailed troubleshooting, see **[Client Setup Guide](docs/CLIENT_SETUP_GUIDE.md)** Section 6.
+
+---
+
 ## Post-Installation Tasks
 
-### 1. Configure Claude Desktop
+### 1. Configure Client Connections
 
-Add MCPs to your Claude Desktop configuration:
-
-**macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
-**Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
-
-```json
-{
-  "mcpServers": {
-    "tokenmetrics": {
-      "command": "node",
-      "args": ["/absolute/path/to/native/lib/tokenmetrics-mcp/build/src/cli.js"],
-      "env": {
-        "TOKENMETRICS_API_KEY": "your_key_here"
-      }
-    },
-    "lunarcrush": {
-      "command": "node",
-      "args": ["/absolute/path/to/native/lib/lunarcrush-mcp/dist/index.js"],
-      "env": {
-        "LUNARCRUSH_API_KEY": "your_key_here"
-      }
-    }
-  }
-}
-```
+See **[Client Configuration](#client-configuration)** section above for complete instructions on setting up:
+- Claude Desktop configuration (`claude_desktop_config.json`)
+- Claude Code CLI configuration (`.mcp.json`)
+- Client connectivity testing
 
 ### 2. Enable PM2 Monitoring
 

@@ -393,6 +393,58 @@ git status
   echo "Deployment started: $(date)" > deployment-$(date +%Y%m%d-%H%M%S).log
   ```
 
+### B4: Client Configuration (Optional - For Claude Desktop/Code CLI)
+
+**Note:** Client configuration is optional during server deployment. Clients can be configured later for testing.
+
+- [ ] **Choose client type**
+  ```bash
+  # Claude Desktop: Uses claude_desktop_config.json
+  # Claude Code CLI: Uses .mcp.json
+  # Both: Use stdio transport (100% compatible with all 41 MCPs)
+  ```
+
+- [ ] **Install client configuration (Windows - Claude Desktop)**
+  ```bash
+  Copy-Item "configs\claude_desktop_config_windows.json" "$env:APPDATA\Claude\claude_desktop_config.json"
+  ```
+
+- [ ] **Install client configuration (Linux - Claude Desktop)**
+  ```bash
+  cp configs/claude_desktop_config_linux.json ~/.config/Claude/claude_desktop_config.json
+  ```
+
+- [ ] **Install client configuration (macOS - Claude Desktop)**
+  ```bash
+  cp configs/claude_desktop_config_macos.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
+  ```
+
+- [ ] **Install client configuration (Claude Code CLI - any platform)**
+  ```bash
+  cp configs/.mcp.json .mcp.json
+  # Or copy to user scope: ~/.mcp.json
+  ```
+
+- [ ] **Customize client configuration paths**
+  ```bash
+  # Edit config file and replace placeholder paths with actual installation directory
+  # Windows: C:\\Users\\User\\mcp-servers\\...
+  # Linux: /home/deploy/workcraft-mcp/...
+  # macOS: /Users/username/crypto-mcp-suite/...
+  ```
+
+- [ ] **Test client connectivity (optional - can be done in Phase D)**
+  ```bash
+  # Test configuration before deployment
+  node scripts/test-client-connections.js --config "$env:APPDATA\Claude\claude_desktop_config.json"  # Windows
+  node scripts/test-client-connections.js --config ~/.config/Claude/claude_desktop_config.json      # Linux/macOS
+  node scripts/test-client-connections.js --config .mcp.json                                         # Claude Code
+
+  # Expected: 100% connectivity (all MCPs reachable via stdio)
+  ```
+
+**See:** [Client Setup Guide](CLIENT_SETUP_GUIDE.md) for detailed client configuration instructions.
+
 ---
 
 ## Phase C: Deployment Execution
@@ -616,6 +668,70 @@ git status
   pm2 set pm2-logrotate:retain 30
   pm2 set pm2-logrotate:compress true
   ```
+
+### D6: Client Connection Testing (Optional)
+
+**Note:** Test client connectivity if you configured clients in Phase B4.
+
+- [ ] **Test Claude Desktop configuration connectivity**
+  ```bash
+  # Windows
+  node scripts/test-client-connections.js --config "$env:APPDATA\Claude\claude_desktop_config.json"
+
+  # Linux
+  node scripts/test-client-connections.js --config ~/.config/Claude/claude_desktop_config.json
+
+  # macOS
+  node scripts/test-client-connections.js --config ~/Library/Application\ Support/Claude/claude_desktop_config.json
+  ```
+
+- [ ] **Test Claude Code CLI configuration connectivity**
+  ```bash
+  node scripts/test-client-connections.js --config .mcp.json
+  # Or if using user scope: node scripts/test-client-connections.js --config ~/.mcp.json
+  ```
+
+- [ ] **Verify 100% client connectivity**
+  ```
+  Expected Output:
+  ==========================================
+  Crypto MCP Suite - Client Connection Test
+  ==========================================
+
+  Testing MCP connections...
+
+  ✅ PASS: ccxt-mcp - Reachable (stdio transport)
+  ✅ PASS: chainlist-mcp - Reachable (stdio transport)
+  ✅ PASS: tokenmetrics-mcp - Reachable (stdio transport)
+  ... (all 41 MCPs)
+
+  Connection Health Score: 100%
+
+  ✅ PERFECT CONNECTIVITY - All MCPs are reachable!
+  ```
+
+- [ ] **If connectivity fails, check common issues:**
+  ```bash
+  # Issue: "Command not found" errors
+  # Solution: Verify node, uv are in PATH
+
+  # Issue: "Module not found" errors
+  # Solution: Re-run dependency installation (Phase A3, A4)
+
+  # Issue: "Path not found" errors
+  # Solution: Update config paths to absolute paths
+
+  # Issue: "Timeout" errors
+  # Solution: Verify MCPs can start manually, check for port conflicts
+  ```
+
+- [ ] **Restart clients after configuration**
+  ```bash
+  # Claude Desktop: Quit and restart application
+  # Claude Code CLI: No restart needed (auto-detected)
+  ```
+
+**See:** [Client Setup Guide](CLIENT_SETUP_GUIDE.md) for comprehensive client troubleshooting.
 
 ---
 
