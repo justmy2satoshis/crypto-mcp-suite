@@ -6,6 +6,9 @@
 [![Coverage](https://img.shields.io/badge/coverage-62%25-green.svg)](PHASE_8D_COMPLETION_REPORT.md)
 [![Python](https://img.shields.io/badge/Python-3.13+-blue.svg)](https://www.python.org/downloads/)
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
+[![RAM](https://img.shields.io/badge/RAM-8GB%20min%20|%2016GB%20recommended-orange.svg)](docs/PERFORMANCE_REQUIREMENTS.md)
+[![CPU](https://img.shields.io/badge/CPU-4%2B%20cores-blue.svg)](docs/PERFORMANCE_REQUIREMENTS.md)
+[![Disk](https://img.shields.io/badge/Disk-10GB-green.svg)](docs/PERFORMANCE_REQUIREMENTS.md)
 
 **95%+ cheaper than Bloomberg Terminal** | **41 MCPs with Git Submodules** | **Production-Ready Phase 8D**
 
@@ -71,6 +74,43 @@ git submodule update --remote --merge
 ```
 
 **See [SUBMODULE_MAPPING.md](SUBMODULE_MAPPING.md) for complete submodule documentation.**
+
+---
+
+## 📁 Configuration File Locations
+
+After installing, you'll need to configure your MCP client. Here's where configuration files should be placed:
+
+### Claude Desktop
+
+| OS | Configuration File Path |
+|----|------------------------|
+| **Windows** | `%APPDATA%\Claude\claude_desktop_config.json`<br/>(Usually: `C:\Users\YOUR_USERNAME\AppData\Roaming\Claude\claude_desktop_config.json`) |
+| **macOS** | `~/Library/Application Support/Claude/claude_desktop_config.json` |
+| **Linux** | `~/.config/Claude/claude_desktop_config.json` |
+
+### Claude Code CLI
+
+| OS | Configuration File Path |
+|----|------------------------|
+| **Windows** | `%APPDATA%\Claude Code\.mcp.json`<br/>(Usually: `C:\Users\YOUR_USERNAME\AppData\Roaming\Claude Code\.mcp.json`) |
+| **macOS** | `~/Library/Application Support/Claude Code/.mcp.json` |
+| **Linux** | `~/.config/Claude Code/.mcp.json` |
+
+### Example Configuration Files
+
+We provide example configuration files in the [`configs/`](configs/) directory:
+
+- **[`claude_desktop_config.example.json`](configs/claude_desktop_config.example.json)** - Example config for Claude Desktop (40 crypto MCPs)
+- **[`claude_code_config.example.json`](configs/claude_code_config.example.json)** - Example config for Claude Code CLI (40 crypto MCPs)
+
+**⚠️ Important:**
+1. **BACKUP** your existing config before modifying
+2. **MERGE** the crypto MCPs with your existing config (don't replace entirely)
+3. **UPDATE** paths in the example configs to match your installation directory
+4. **RESTART** your MCP client after making changes
+
+---
 
 ### Local Development Environment
 
