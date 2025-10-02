@@ -4,9 +4,28 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![MCPs](https://img.shields.io/badge/MCPs-41%2F66-blue.svg)](MCP_INSTALLATION_STATUS.md)
 [![Coverage](https://img.shields.io/badge/coverage-62%25-green.svg)](PHASE_8D_COMPLETION_REPORT.md)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Python](https://img.shields.io/badge/Python-3.13+-blue.svg)](https://www.python.org/downloads/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
 
 **95%+ cheaper than Bloomberg Terminal** | **41 MCPs with Git Submodules** | **Production-Ready Phase 8D**
+
+---
+
+## 📑 Table of Contents
+
+- [🎯 What is This?](#-what-is-this)
+- [📦 Cloning with Git Submodules](#-cloning-with-git-submodules)
+- [🚀 Quick Start Installation](#-quick-start-installation)
+  - [Prerequisites](#prerequisites)
+  - [Step 1-5: Complete Setup](#step-1-clone-repository-1-min)
+  - [Troubleshooting](#️-troubleshooting-basics)
+- [🚀 Deployment](#-deployment)
+- [🖥️ Client Setup](#️-client-setup)
+- [📊 Architecture Overview](#-architecture-overview)
+- [💰 Cost Comparison](#-cost-comparison)
+- [📚 Documentation](#-documentation)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
 
 ---
 
@@ -75,34 +94,46 @@ For detailed API key management and security practices, see [API_KEYS_REFERENCE.
 
 ## 🚀 Quick Start Installation
 
+**⏱️ Time: 5-10 minutes** | **Goal: Clone → Install → Configure → Test → Use**
+
 ### Prerequisites
 
-- **Node.js 18+** (for Node.js MCPs)
-- **Python 3.10+** with `uv` (for Python MCPs)
-- **Git** with submodule support
-- **PM2** (for process management)
+Before starting, ensure you have:
 
-### Step 1: Clone with Submodules
+- **Node.js 18+** - [Download](https://nodejs.org/) (for 11 Node.js MCPs)
+- **Python 3.13+** - [Download](https://www.python.org/downloads/) (for 30 Python MCPs, full compatibility)
+  - *Note: 26 MCPs work with Python 3.10+, but 5 require 3.13+ (feargreed, cryptopanic, sentiment, rug-check, whale-tracker)*
+- **uv Package Manager** - Python dependency manager
+  - Windows: `powershell -c "irm https://astral.sh/uv/install.ps1 | iex"`
+  - Linux/macOS: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- **Git** - [Download](https://git-scm.com/) (with submodule support)
+
+### Step 1: Clone Repository (1 min)
 
 ```bash
 git clone --recurse-submodules https://github.com/justmy2satoshis/crypto-mcp-suite.git
 cd crypto-mcp-suite
 ```
 
-### Step 2: Install Dependencies
+### Step 2: Install Dependencies (3-5 min)
 
-**Node.js MCPs (3 MCPs):**
+**Node.js MCPs (11 MCPs):**
 ```bash
 cd native/lib/bridge-rates-mcp && npm install && cd ../../..
 cd native/lib/ccxt-mcp && npm install && cd ../../..
 cd native/lib/crypto-indicators-mcp && npm install && cd ../../..
+cd native/lib/cointelegraph-rss-mcp && npm install && cd ../../..
+cd native/lib/coingecko-trending-mcp && npm install && cd ../../..
+cd native/lib/crypto-compare-mcp && npm install && cd ../../..
+cd native/lib/lunarcrush-mcp && npm install && cd ../../..
+cd native/lib/santiment-mcp && npm install && cd ../../..
+cd native/lib/tokenmetrics-mcp && npm install && cd ../../..
+cd native/lib/uniswap-trader-mcp && npm install && cd ../../..
+cd native/lib/wallet-balance-mcp && npm install && cd ../../..
 ```
 
-**Python MCPs (38 MCPs):**
+**Python MCPs (30 MCPs):**
 ```bash
-# Install uv if not already installed
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
 # Install Python dependencies for all MCPs
 for dir in native/lib/*/; do
   if [ -f "$dir/pyproject.toml" ]; then
@@ -111,41 +142,95 @@ for dir in native/lib/*/; do
 done
 ```
 
-### Step 3: Compile TypeScript MCPs
-
+**TypeScript Compilation (2 MCPs):**
 ```bash
 cd native/lib/ccxt-mcp && npm run build && cd ../../..
 cd native/lib/tokenmetrics-mcp && npm run build && cd ../../..
 ```
 
-### Step 4: Configure API Keys
+### Step 3: Configure Client (2 min)
 
-Create `.env.local` file in the root directory with your API keys:
+Choose your MCP client and copy the appropriate configuration:
 
+**Option A: Claude Desktop**
 ```bash
-# Premium AI Analytics (FREE tiers available)
-TOKENMETRICS_API_KEY=your_key_here  # https://tokenmetrics.com (FREE tier)
-LUNARCRUSH_API_KEY=your_key_here    # https://lunarcrush.com (FREE tier)
+# Windows (PowerShell)
+Copy-Item "configs\claude_desktop_config_windows.json" "$env:APPDATA\Claude\claude_desktop_config.json"
 
-# Other API keys...
-# See API_KEY_SETUP_GUIDE.md for complete list
+# Linux
+cp configs/claude_desktop_config_linux.json ~/.config/Claude/claude_desktop_config.json
+
+# macOS
+cp configs/claude_desktop_config_macos.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 
-### Step 5: Start MCPs via PM2
-
+**Option B: Claude Code CLI**
 ```bash
-# Install PM2 globally
-npm install -g pm2
-
-# Start all MCPs
-pm2 start native/config/ecosystem.config.js
-
-# Or start specific tier
-pm2 start native/config/ecosystem.config.js --only tier1
+# Any platform
+cp configs/.mcp.json .mcp.json
 ```
 
-**[→ Full Installation Guide](INSTALLATION_GUIDE.md)**
-**[→ API Key Setup Guide](API_KEY_SETUP_GUIDE.md)**
+**Important:** Edit the configuration file and update all paths to match your installation directory.
+
+### Step 4: Test Connectivity (1 min)
+
+Verify all 41 MCPs are reachable:
+
+```bash
+# Test Claude Desktop configuration
+node scripts/test-client-connections.js --config "$env:APPDATA\Claude\claude_desktop_config.json"  # Windows
+node scripts/test-client-connections.js --config ~/.config/Claude/claude_desktop_config.json      # Linux/macOS
+
+# Test Claude Code CLI configuration
+node scripts/test-client-connections.js --config .mcp.json
+```
+
+**Expected Output:** `✅ 41/41 MCPs reachable` (or appropriate subset based on your configuration)
+
+### Step 5: Start Using MCPs
+
+- **Claude Desktop**: Quit and restart the application, then start a new conversation
+- **Claude Code CLI**: Run `claude-code` from your project directory
+
+**Test your setup:**
+```
+User: Use bridge-rates-mcp to get supported chains
+```
+
+Expected: Claude returns a table of supported blockchain networks.
+
+### ⚠️ Troubleshooting Basics
+
+| Issue | Solution |
+|-------|----------|
+| **"File not found" errors** | Use absolute paths in config files, not relative paths |
+| **"Module not found" errors** | Run `npm install` (Node.js) or `uv sync` (Python) in MCP directory |
+| **"Cannot connect to MCP"** | Verify MCP can start manually: `node /path/to/index.js` or `uv run main.py` |
+| **TypeScript errors** | Run `npm run build` in ccxt-mcp and tokenmetrics-mcp directories |
+| **Python version errors** | Upgrade to Python 3.13+ for full compatibility |
+
+See **[CLIENT_SETUP_GUIDE.md](docs/CLIENT_SETUP_GUIDE.md)** for detailed troubleshooting.
+
+### 📚 Next Steps
+
+1. **Configure API Keys** (Optional - FREE tier works without keys)
+   - See [API_KEY_SETUP_GUIDE.md](API_KEY_SETUP_GUIDE.md) for API key acquisition
+   - FREE tier: 25 MCPs, no keys required
+   - FREEMIUM tier: 35 MCPs, free API keys (TokenMetrics, LunarCrush)
+   - FULL tier: All 41 MCPs with all features
+
+2. **Advanced: PM2 Process Management** (Optional - for development/monitoring)
+   ```bash
+   npm install -g pm2
+   pm2 start native/config/ecosystem.config.js
+   ```
+   *Note: PM2 is for server-side development only. Clients spawn independent MCP processes.*
+
+3. **Explore Capabilities**
+   - Review [MCP_CAPABILITY_MATRIX.md](docs/MCP_CAPABILITY_MATRIX.md) for full tool list
+   - Check [PRE_DEPLOYMENT_CHECKLIST.md](docs/PRE_DEPLOYMENT_CHECKLIST.md) for production deployment
+
+**[→ Full Installation Guide](INSTALLATION_GUIDE.md)** | **[→ Client Setup Guide](docs/CLIENT_SETUP_GUIDE.md)**
 
 ---
 

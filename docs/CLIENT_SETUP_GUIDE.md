@@ -57,10 +57,12 @@ The Model Context Protocol (MCP) uses a **client-server architecture** where:
    node --version  # Should be v18.0.0 or higher
    ```
 
-2. **Python 3.10+** (for 30 Python MCPs)
+2. **Python 3.13+** (for 30 Python MCPs, full compatibility)
    ```bash
    python --version  # or python3 --version
    ```
+
+   *Note: 26 MCPs work with Python 3.10+, but 5 require 3.13+ (crypto-feargreed, cryptopanic, crypto-sentiment, rug-check, whale-tracker)*
 
 3. **uv Package Manager** (for Python MCPs)
    ```bash
