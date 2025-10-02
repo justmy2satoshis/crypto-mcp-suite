@@ -17,6 +17,7 @@
 - [📦 Cloning with Git Submodules](#-cloning-with-git-submodules)
 - [🚀 Quick Start Installation](#-quick-start-installation)
   - [Prerequisites](#prerequisites)
+  - [Check Your Device](#-check-your-device)
   - [Step 1-5: Complete Setup](#step-1-clone-repository-1-min)
   - [Troubleshooting](#️-troubleshooting-basics)
 - [🚀 Deployment](#-deployment)
@@ -24,6 +25,7 @@
 - [📊 Architecture Overview](#-architecture-overview)
 - [💰 Cost Comparison](#-cost-comparison)
 - [📚 Documentation](#-documentation)
+  - [📈 Performance Requirements](docs/PERFORMANCE_REQUIREMENTS.md)
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
 
@@ -97,6 +99,23 @@ For detailed API key management and security practices, see [API_KEYS_REFERENCE.
 **⏱️ Time: 5-10 minutes** | **Goal: Clone → Install → Configure → Test → Use**
 
 ### Prerequisites
+
+#### 📋 Check Your Device
+
+**Minimum Requirements:**
+- 💻 **8 GB RAM** (for FREE tier: 25 MCPs)
+- ⚡ **4 CPU cores** (8 recommended)
+- 💾 **10 GB disk space**
+
+**Your Device:** Check if you meet requirements → **[Performance Requirements Guide](docs/PERFORMANCE_REQUIREMENTS.md)**
+
+| Device Tier | RAM | MCPs | Use Case |
+|-------------|-----|------|----------|
+| **Minimum** | 8 GB | 10-15 | Light usage |
+| **Recommended** | 16 GB | 25-35 | Regular usage |
+| **Optimal** | 32+ GB | All 41 | Heavy concurrent usage |
+
+#### 🛠️ Software Prerequisites
 
 Before starting, ensure you have:
 
