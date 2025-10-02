@@ -355,6 +355,65 @@ netstat -ano | findstr :3078  # Windows
 
 ---
 
+## Pre-Deployment Validation
+
+**Before deploying to production**, validate your installation using our comprehensive pre-deployment framework:
+
+### Quick Validation (2-5 minutes)
+
+```bash
+# Step 1: Validate system requirements
+./scripts/pre-deployment-check.sh
+
+# Step 2: Verify dependencies
+node scripts/validate-mcp-dependencies.js
+
+# Step 3: Test API keys (if using API-dependent MCPs)
+./scripts/test-api-keys.sh
+```
+
+### Comprehensive Deployment Framework
+
+For production deployments, follow our **5-phase validation framework** (30-60 minutes):
+
+**Phase A: Pre-Deployment Local Validation**
+- System requirements (Node.js, Python, uv, Git, PM2)
+- Repository & submodule status
+- Node.js & Python dependencies
+- TypeScript compilation
+- Configuration file validation
+
+**Phase B: Deployment Preparation**
+- API key configuration (tier-specific)
+- API key validation
+- Backup current state
+
+**Phase C: Deployment Execution**
+- Choose tier (FREE, FREEMIUM, FULL)
+- Deploy with PM2
+- Monitor startup
+
+**Phase D: Post-Deployment Validation**
+- Process health check
+- Functionality validation (tier-specific)
+- Error log analysis
+- Resource monitoring
+
+**Phase E: Rollback Procedures** (if needed)
+- Emergency rollback steps
+- Root cause diagnosis
+- Fix and retry
+
+**📋 [Pre-Deployment Checklist](docs/PRE_DEPLOYMENT_CHECKLIST.md)** - Complete 5-phase framework
+
+### Additional Resources
+
+- **[MCP Capability Matrix](docs/MCP_CAPABILITY_MATRIX.md)** - Complete 41-MCP capability reference with dependencies, API keys, and tiers
+- **[Error Pattern Library](docs/ERROR_PATTERN_LIBRARY.md)** - Troubleshooting guide with real Phase 8D error patterns and fixes
+- **[API Key Setup Guide](API_KEY_SETUP_GUIDE.md)** - Detailed API signup and configuration
+
+---
+
 ## Post-Installation Tasks
 
 ### 1. Configure Claude Desktop
