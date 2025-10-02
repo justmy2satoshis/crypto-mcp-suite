@@ -30,6 +30,7 @@ const TIERS = {
   advanced: ['tier1', 'tier2', 'tier3'],
   premium: ['tier1', 'tier2', 'tier3', 'tier4'],
   full: ['tier1', 'tier2', 'tier3', 'tier4', 'tier5'],
+  'premium-plus': ['tier1', 'tier2', 'tier3', 'tier4', 'tier5', 'tier6'], // Full suite + premium MCPs
   'crypto-plus': ['tier1', 'tier5'] // Essential utilities + new crypto MCPs only
 };
 
@@ -1025,6 +1026,94 @@ const mcps = [
     },
     error_file: path.join(logPath, 'raydium-launchlab-mcp-error.log'),
     out_file: path.join(logPath, 'raydium-launchlab-mcp-out.log')
+  },
+
+  // ==========================================================================
+  // PHASE 8D: Premium & Critical Gap MCPs (5 MCPs, Ports 3078-3082)
+  // ==========================================================================
+
+  {
+    name: 'tokenmetrics-mcp',
+    script: path.join(installPath, 'lib', 'tokenmetrics-mcp', 'dist', 'index.js'),
+    tier: 'tier6',
+    interpreter: 'node',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.TOKENMETRICS_PORT || 3078,
+      TOKENMETRICS_API_KEY: process.env.TOKENMETRICS_API_KEY || ''
+    },
+    error_file: path.join(logPath, 'tokenmetrics-mcp-error.log'),
+    out_file: path.join(logPath, 'tokenmetrics-mcp-out.log')
+  },
+  {
+    name: 'lunarcrush-mcp',
+    script: path.join(installPath, 'lib', 'lunarcrush-mcp', 'index.js'),
+    tier: 'tier6',
+    interpreter: 'node',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.LUNARCRUSH_PORT || 3079,
+      LUNARCRUSH_API_KEY: process.env.LUNARCRUSH_API_KEY || ''
+    },
+    error_file: path.join(logPath, 'lunarcrush-mcp-error.log'),
+    out_file: path.join(logPath, 'lunarcrush-mcp-out.log')
+  },
+  {
+    name: 'ethereum-validator-queue-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'ethereum-validator-queue-mcp'),
+      'run',
+      'python',
+      'main.py'
+    ],
+    tier: 'tier6',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.ETHEREUM_VALIDATOR_QUEUE_PORT || 3080
+    },
+    error_file: path.join(logPath, 'ethereum-validator-queue-mcp-error.log'),
+    out_file: path.join(logPath, 'ethereum-validator-queue-mcp-out.log')
+  },
+  {
+    name: 'crypto-rss-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'crypto-rss-mcp'),
+      'run',
+      'crypto-rss-mcp'
+    ],
+    tier: 'tier6',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.CRYPTO_RSS_PORT || 3081
+    },
+    error_file: path.join(logPath, 'crypto-rss-mcp-error.log'),
+    out_file: path.join(logPath, 'crypto-rss-mcp-out.log')
+  },
+  {
+    name: 'crypto-whitepapers-mcp',
+    script: 'uv',
+    args: [
+      '--directory',
+      path.join(installPath, 'lib', 'crypto-whitepapers-mcp'),
+      'run',
+      'crypto-whitepapers-mcp'
+    ],
+    tier: 'tier6',
+    ...commonOptions,
+    env: {
+      ...commonOptions.env,
+      PORT: process.env.CRYPTO_WHITEPAPERS_PORT || 3082
+    },
+    error_file: path.join(logPath, 'crypto-whitepapers-mcp-error.log'),
+    out_file: path.join(logPath, 'crypto-whitepapers-mcp-out.log')
   }
 ];
 
@@ -1050,6 +1139,7 @@ module.exports.tierInfo = {
     tier2: mcps.filter(m => m.tier === 'tier2').length,
     tier3: mcps.filter(m => m.tier === 'tier3').length,
     tier4: mcps.filter(m => m.tier === 'tier4').length,
-    tier5: mcps.filter(m => m.tier === 'tier5').length
+    tier5: mcps.filter(m => m.tier === 'tier5').length,
+    tier6: mcps.filter(m => m.tier === 'tier6').length
   }
 };

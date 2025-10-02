@@ -1,10 +1,10 @@
 # Git Submodule Mapping - Crypto MCP Suite
 
-**Purpose:** This document maps all 36 MCP servers to their original GitHub repositories as git submodules.
+**Purpose:** This document maps all 41 MCP servers to their original GitHub repositories as git submodules.
 
 **Created:** October 2, 2025
-**Last Updated:** October 2, 2025 (Phase 8A)
-**Total Submodules:** 36 (27 original + 9 Phase 8A additions)
+**Last Updated:** October 2, 2025 (Phase 8D)
+**Total Submodules:** 41 (27 original + 9 Phase 8A + 5 Phase 8D additions)
 
 ---
 
@@ -56,6 +56,11 @@ Each is a git submodule pointing to its original GitHub repository.
 | **34** | **pumpfun-wallets-mcp** | **https://github.com/kukapay/pumpfun-wallets-mcp.git** | **native/lib/pumpfun-wallets-mcp** |
 | **35** | **raydium-launchlab-mcp** | **https://github.com/kukapay/raydium-launchlab-mcp.git** | **native/lib/raydium-launchlab-mcp** |
 | **36** | **sui-trader-mcp** | **https://github.com/kukapay/sui-trader-mcp.git** | **native/lib/sui-trader-mcp** |
+| **37** | **tokenmetrics-mcp** | **https://github.com/token-metrics/mcp.git** | **native/lib/tokenmetrics-mcp** |
+| **38** | **lunarcrush-mcp** | **https://github.com/lunarcrush/mcp-server.git** | **native/lib/lunarcrush-mcp** |
+| **39** | **ethereum-validator-queue-mcp** | **https://github.com/kukapay/ethereum-validator-queue-mcp.git** | **native/lib/ethereum-validator-queue-mcp** |
+| **40** | **crypto-rss-mcp** | **https://github.com/kukapay/crypto-rss-mcp.git** | **native/lib/crypto-rss-mcp** |
+| **41** | **crypto-whitepapers-mcp** | **https://github.com/kukapay/crypto-whitepapers-mcp.git** | **native/lib/crypto-whitepapers-mcp** |
 
 ---
 
@@ -80,9 +85,29 @@ Each is a git submodule pointing to its original GitHub repository.
 
 ---
 
+## Phase 8D Additions (October 2, 2025)
+
+**New MCPs Added:** 5 (CRITICAL/HIGH priority from Phase 8C assessment)
+**Total MCPs:** 41/66 (62% coverage, up from 55%)
+
+### Successfully Installed
+1. **tokenmetrics-mcp** - TokenMetrics AI analytics (Node.js) - 18+ tools
+2. **lunarcrush-mcp** - LunarCrush social intelligence (Node.js) - 11+ tools
+3. **ethereum-validator-queue-mcp** - ETH validator queue (Python/uv) - corrected spelling
+4. **crypto-rss-mcp** - Custom RSS feed aggregator (Python/uv)
+5. **crypto-whitepapers-mcp** - Research automation (Python/uv)
+
+### Key Achievement
+- ✅ **ethereum-validators-queue-mcp naming error resolved** (singular "validator" not plural)
+- ✅ **2 premium MCPs added** (TokenMetrics, LunarCrush)
+- ✅ **Research automation enabled** (crypto-rss-mcp, crypto-whitepapers-mcp)
+
+---
+
 ## Repository Attribution
 
-**Primary Source:** [Kukapay Crypto MCP Suite](https://github.com/kukapay) (35 MCPs)
+**Primary Source:** [Kukapay Crypto MCP Suite](https://github.com/kukapay) (38 MCPs)
+**Premium MCPs:** [TokenMetrics](https://github.com/token-metrics/mcp) (1 MCP), [LunarCrush](https://github.com/lunarcrush/mcp-server) (1 MCP)
 **External Dependency:** [doggybee/mcp-server-ccxt](https://github.com/doggybee/mcp-server-ccxt) (1 MCP)
 
 ---

@@ -106,3 +106,18 @@
 [submodule "native/lib/raydium-launchlab-mcp"]
 	path = native/lib/raydium-launchlab-mcp
 	url = https://github.com/kukapay/raydium-launchlab-mcp.git
+[submodule "native/lib/tokenmetrics-mcp"]
+	path = native/lib/tokenmetrics-mcp
+	url = https://github.com/token-metrics/mcp.git
+[submodule "native/lib/lunarcrush-mcp"]
+	path = native/lib/lunarcrush-mcp
+	url = https://github.com/lunarcrush/mcp-server.git
+[submodule "native/lib/ethereum-validator-queue-mcp"]
+	path = native/lib/ethereum-validator-queue-mcp
+	url = https://github.com/kukapay/ethereum-validator-queue-mcp.git
+[submodule "native/lib/crypto-rss-mcp"]
+	path = native/lib/crypto-rss-mcp
+	url = https://github.com/kukapay/crypto-rss-mcp.git
+[submodule "native/lib/crypto-whitepapers-mcp"]
+	path = native/lib/crypto-whitepapers-mcp
+	url = https://github.com/kukapay/crypto-whitepapers-mcp.git
