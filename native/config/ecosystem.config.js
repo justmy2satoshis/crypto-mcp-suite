@@ -1034,7 +1034,7 @@ const mcps = [
 
   {
     name: 'tokenmetrics-mcp',
-    script: path.join(installPath, 'lib', 'tokenmetrics-mcp', 'dist', 'index.js'),
+    script: path.join(installPath, 'lib', 'tokenmetrics-mcp', 'build', 'src', 'cli.js'),
     tier: 'tier6',
     interpreter: 'node',
     ...commonOptions,
